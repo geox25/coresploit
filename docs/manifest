@@ -1,0 +1,9 @@
+Modified 1/25/2024
+
+Ubuntu Package Dependencies:
+liballegro5-dev     (vendor/imgui/backends/)
+libglfw3            (imgui)
+libglfw3-dev        (imgui)
+xorg                (imgui)
+xorg-dev            (imgui)
+opengl3             (imgui)
