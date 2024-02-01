@@ -16,12 +16,53 @@ using std::queue;
 using std::unordered_map;
 using std::function;
 
-std::atomic<bool>                       stop_service(false);
 ThreadSafeQueue<string>                 util_log_stack = ThreadSafeQueue<string>();
-unordered_map<string, atomic<bool>>     service_id_status = unordered_map<string, atomic<bool>>();
-unordered_map<string, function<int()>>    service_id_entry = unordered_map<string, function<int()>>();
+unordered_map<string, UnifiedService>   services;
+
+bool requestAddService(const string& id, const function<int()>& service) {
+    // Reject request if map of service_id->UnifiedService already contains id
+    if (services.contains(id)) {
+        return false;
+    }
+
+    UnifiedService serv = UnifiedService(service);
+    services.insert(std::make_pair(id, service));
+
+    return true;
+}
+
+bool requestServiceStatus(const string& id) {
+    if (services.contains(id)) {
+        return services.at(id).getStatus();
+    } else {
+        return true;
+    }
+}
+
+function<int()> requestService(const string& id) {
+    return services.at(id).getService();
+}
+
+bool requestValidServiceID(const string& id) {
+    return services.contains(id);
+}
+
+bool requestStartService(const string& id) {
+    if (services.contains(id)) {
+        return services.at(id).start();
+    } else {
+        return false;
+    }
+}
+
+bool requestStopService(const string& id) {
+    if (services.contains(id)) {
+        return services.at(id).stop();
+    } else {
+        return false;
+    }
+}
 
 void makeServices() {
-    service_id_entry["example"] = exampleService;
-    service_id_status["example"] = true;
+    requestAddService("example.svc", exampleService);
 }

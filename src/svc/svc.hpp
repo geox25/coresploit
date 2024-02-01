@@ -60,9 +60,50 @@ public:
 extern atomic<bool>                             stop_service;
 extern ThreadSafeQueue<string>                  util_log_stack;
 
+class UnifiedService {
+private:
+    atomic<bool> status = true;
+    function<int()> service;
+public:
+    explicit UnifiedService(const function<int()>& service) {
+        this->service = service;
+    }
+
+    function<int()> getService() {
+        return service;
+    }
+
+    atomic<bool>& getStatus() {
+        return status;
+    }
+
+    // TODO: Add error-checking functionality
+    bool start() {
+        status = false;
+        return true;
+    }
+
+    // TODO: Add error-checking functionality
+    bool stop() {
+        status = true;
+        return true;
+    }
+};
+
 // TODO: Replace string with more robust ID class?
-extern unordered_map<string, atomic<bool>>      service_id_status;
-extern unordered_map<string, function<int()>>     service_id_entry;
+extern unordered_map<string, UnifiedService> services;
+
+extern bool requestAddService(const string& id, const UnifiedService& service);
+
+extern bool requestServiceStatus(const string& id);
+
+extern function<int()> requestService(const string& id);
+
+extern bool requestValidServiceID(const string& id);
+
+extern bool requestStartService(const string& id);
+
+extern bool requestStopService(const string& id);
 
 void makeServices();
 

@@ -12,6 +12,7 @@
 #include "imgui.h"
 #include "../svc/svc.hpp"
 #include "../svc/example-svc.hpp"
+#include "config.hpp"
 
 using std::string, std::vector, std::unordered_map, std::function, std::istream_iterator, std::stringstream, std::transform, std::future, std::function;
 
@@ -19,13 +20,15 @@ namespace boot::window {
 
     // Definition for PXL-Console Window
     struct Console {
-        vector<future<int>> services;
+        unordered_map<string, future<int>> futures;
 
         vector<string>      Items;
         ImGuiTextFilter     Filter;
         bool                AutoScroll;
         bool                ScrollToBottom;
         char                InputBuf[256];
+
+        bool example = false;
 
         // Maps string cmd to its corresponding function for execution
         unordered_map<string, function<void(const vector<string>&)>> command_map;
@@ -41,7 +44,6 @@ namespace boot::window {
         ~Console() {
             // Make sure Items vector is empty
             Items.clear();
-            stop_service = true;
         }
 
         void PopulateCommandMap() {
@@ -62,10 +64,10 @@ namespace boot::window {
                     services.push_back(std::async(std::launch::async, exampleService));
                 }*/
 
-                if (service_id_entry.contains(cmd.at(1)) && service_id_status.contains(cmd.at(1))) {
+                if (requestValidServiceID(cmd.at(1))) {
                     AddLog("Starting service: " + cmd.at(1));
-                    service_id_status.at(cmd.at(1)) = false;
-                    services.push_back(std::async(std::launch::async, service_id_entry.at(cmd.at(1))));
+                    requestStartService(cmd.at(1));
+                    futures.emplace(cmd.at(1), std::async(std::launch::async, requestService(cmd.at(1))));
                 } else {
                     AddLog("Could not locate service: " + cmd.at(1));
                 }
@@ -75,10 +77,12 @@ namespace boot::window {
                     return;
                 }
 
-                if (service_id_entry.contains(cmd.at(1)) && service_id_status.contains(cmd.at(1))) {
+                if (requestValidServiceID(cmd.at(1))) {
                     AddLog("Stopping service: " + cmd.at(1));
-                    service_id_status.at(cmd.at(1)) = true;
-                    // TODO: Remove future from services vector
+                    requestStopService(cmd.at(1));
+                    // TODO: Remove future from futures vector
+                    futures.erase(cmd.at(1));
+                    AddLog("Services<future> length: " + std::to_string(futures.size()));
                 } else {
                     AddLog("Could not locate service: " + cmd.at(1));
                 }
@@ -106,7 +110,7 @@ namespace boot::window {
         }
 
         void Draw(const string& title, bool& show_console) {
-            ImGui::SetNextWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver);
+            ImGui::SetNextWindowSize(DEFAULT_WIN_CONSOLE_SIZE);
             if (!ImGui::Begin(title.c_str(), &show_console)) {
                 ImGui::End();
                 return;
@@ -128,7 +132,6 @@ namespace boot::window {
 
             // Options popup menu with example checkbox
             if (ImGui::BeginPopup("Options")) {
-                bool example = false;
                 ImGui::Checkbox("Example", &example);
                 ImGui::EndPopup();
             }
@@ -139,6 +142,13 @@ namespace boot::window {
             ImGui::SameLine();
             Filter.Draw(R"(Filter ("incl,-excl") ("error"))", 180);
             ImGui::Separator();
+
+            // DEBUG CODE FOR SHOWING WINDOW SIZE
+            /*
+            ImVec2 size = ImGui::GetWindowSize();
+            string winSize = std::to_string(size.x) + "," + std::to_string(size.y);
+            Items.push_back(winSize);
+             */
 
             // Reserve enough left-over height for 1 separator + 1 input text
             const float footer_height_to_reserve = ImGui::GetStyle().ItemSpacing.y + ImGui::GetFrameHeightWithSpacing();

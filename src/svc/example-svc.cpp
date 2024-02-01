@@ -15,7 +15,7 @@ using std::cout, std::endl, std::string, std::queue;
 int exampleService() {
     int counter = 1;
 
-    while (!service_id_status["example"]) {
+    while (!requestServiceStatus("example.svc")) {
         util_log_stack.push("Information Relay " + std::to_string(counter));
         counter++;
 

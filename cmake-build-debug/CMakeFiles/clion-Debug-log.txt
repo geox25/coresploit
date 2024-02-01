@@ -1,4 +1,0 @@
-/snap/clion/262/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/snap/clion/262/bin/ninja/linux/x64/ninja -DCMAKE_TOOLCHAIN_FILE=/home/geo/.vcpkg-clion/vcpkg/scripts/buildsystems/vcpkg.cmake -G Ninja -S /home/geo/CLionProjects/PXL -B /home/geo/CLionProjects/PXL/cmake-build-debug
--- Configuring done (0.0s)
--- Generating done (0.0s)
--- Build files have been written to: /home/geo/CLionProjects/PXL/cmake-build-debug
