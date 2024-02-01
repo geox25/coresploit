@@ -521,7 +521,7 @@ void _glfwUpdateKeyNamesWin32(void)
 }
 
 // Replacement for IsWindowsVersionOrGreater, as we cannot rely on the
-// application having a correct embedded manifest
+// application having a correct embedded dependencies-manifest
 //
 BOOL _glfwIsWindowsVersionOrGreaterWin32(WORD major, WORD minor, WORD sp)
 {
@@ -531,7 +531,7 @@ BOOL _glfwIsWindowsVersionOrGreaterWin32(WORD major, WORD minor, WORD sp)
     cond = VerSetConditionMask(cond, VER_MINORVERSION, VER_GREATER_EQUAL);
     cond = VerSetConditionMask(cond, VER_SERVICEPACKMAJOR, VER_GREATER_EQUAL);
     // HACK: Use RtlVerifyVersionInfo instead of VerifyVersionInfoW as the
-    //       latter lies unless the user knew to embed a non-default manifest
+    //       latter lies unless the user knew to embed a non-default dependencies-manifest
     //       announcing support for Windows 10 via supportedOS GUID
     return RtlVerifyVersionInfo(&osvi, mask, cond) == 0;
 }
@@ -546,7 +546,7 @@ BOOL _glfwIsWindows10BuildOrGreaterWin32(WORD build)
     cond = VerSetConditionMask(cond, VER_MINORVERSION, VER_GREATER_EQUAL);
     cond = VerSetConditionMask(cond, VER_BUILDNUMBER, VER_GREATER_EQUAL);
     // HACK: Use RtlVerifyVersionInfo instead of VerifyVersionInfoW as the
-    //       latter lies unless the user knew to embed a non-default manifest
+    //       latter lies unless the user knew to embed a non-default dependencies-manifest
     //       announcing support for Windows 10 via supportedOS GUID
     return RtlVerifyVersionInfo(&osvi, mask, cond) == 0;
 }

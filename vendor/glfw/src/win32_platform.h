@@ -163,7 +163,7 @@ typedef enum
 #endif /*DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2*/
 
 // Replacement for versionhelpers.h macros, as we cannot rely on the
-// application having a correct embedded manifest
+// application having a correct embedded dependencies-manifest
 //
 #define IsWindowsXPOrGreater()                                 \
     _glfwIsWindowsVersionOrGreaterWin32(HIBYTE(_WIN32_WINNT_WINXP),   \
