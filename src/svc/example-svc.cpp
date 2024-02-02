@@ -15,6 +15,9 @@ using std::cout, std::endl, std::string, std::queue;
 int exampleService() {
     int counter = 1;
 
+    // Example of OTHER_COLOR usage would be logging the value of a variable
+    util_log_stack.push("#O [example.svc] >> init value of counter = " + std::to_string(counter));
+
     while (!requestServiceStatus("example.svc")) {
         util_log_stack.push("Information Relay " + std::to_string(counter));
         counter++;

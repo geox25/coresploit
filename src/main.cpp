@@ -72,6 +72,9 @@ int main(int, char**) {
     io.SetClipboardTextFn = _IMGUISetClipboardText;
     io.GetClipboardTextFn = _IMGUIGetClipboardText;
 
+    // Setup segoe-ui font size 17
+    ImFont* font = io.Fonts->AddFontFromFileTTF("../rsc/fonts/segoe-ui.ttf", 17.0f, NULL, io.Fonts->GetGlyphRangesDefault());
+
     // Setup Style
     boot::trivial::MakeStyle(ImGui::GetStyle());
 

@@ -25,7 +25,6 @@ bool requestAddService(const string& id, const function<int()>& service) {
         return false;
     }
 
-    UnifiedService serv = UnifiedService(service);
     services.insert(std::make_pair(id, service));
 
     return true;

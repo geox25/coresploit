@@ -11,8 +11,8 @@
 #include <future>
 #include "imgui.h"
 #include "../svc/svc.hpp"
-#include "../svc/example-svc.hpp"
 #include "config.hpp"
+#include "msg.hpp"
 
 using std::string, std::vector, std::unordered_map, std::function, std::istream_iterator, std::stringstream, std::transform, std::future, std::function;
 
@@ -54,16 +54,6 @@ namespace boot::window {
                     return;
                 }
 
-                // TODO: Use identifier for each service to track when it should start/stop.
-                // TODO: This could be done with a map of ID to function
-                // TODO: When running START cmd, if match of ID in map is found, call function and map ID to atomic<bool>
-                // If start cmd wants to start example service
-                /*if (cmd.at(1) == "example") {
-                    AddLog("Starting service: " + cmd.at(1));
-                    stop_service = false;
-                    services.push_back(std::async(std::launch::async, exampleService));
-                }*/
-
                 if (requestValidServiceID(cmd.at(1))) {
                     AddLog("Starting service: " + cmd.at(1));
                     requestStartService(cmd.at(1));
@@ -80,9 +70,10 @@ namespace boot::window {
                 if (requestValidServiceID(cmd.at(1))) {
                     AddLog("Stopping service: " + cmd.at(1));
                     requestStopService(cmd.at(1));
-                    // TODO: Remove future from futures vector
                     futures.erase(cmd.at(1));
-                    AddLog("Services<future> length: " + std::to_string(futures.size()));
+
+                    // TODO: Only show if debug-msgs enabled (verbose mode)
+                    AddLog("#O [0] <boot.cpp> unordered_map<string, future<int>> futures length: " + std::to_string(futures.size()));
                 } else {
                     AddLog("Could not locate service: " + cmd.at(1));
                 }
@@ -153,7 +144,8 @@ namespace boot::window {
             // Reserve enough left-over height for 1 separator + 1 input text
             const float footer_height_to_reserve = ImGui::GetStyle().ItemSpacing.y + ImGui::GetFrameHeightWithSpacing();
             if (ImGui::BeginChild("ScrollingRegion", ImVec2(0, -footer_height_to_reserve), ImGuiChildFlags_None, ImGuiWindowFlags_HorizontalScrollbar)) {
-                // Insert log messages from util_loq_stack queue to the main Items vector
+
+                // Merge log messages from util_log_stack to main Items vector
                 while (util_log_stack.size() != 0) {
                     Items.push_back(util_log_stack.front());
                     util_log_stack.pop();
@@ -165,9 +157,22 @@ namespace boot::window {
                     if (!Filter.PassFilter(item_cstr))
                         continue;
 
-                    // TODO: Add support here for colored output
+                    // Old way of logging messages without color
+                    // ImGui::TextUnformatted(item_cstr);
 
-                    ImGui::TextUnformatted(item_cstr);
+                    ImVec4 msg_color = NORMAL_COLOR;
+
+                    if (item.starts_with("#E")) {
+                        msg_color = ERROR_COLOR;
+                    } else if (item.starts_with("#W")) {
+                        msg_color = WARNING_COLOR;
+                    } else if (item.starts_with("#S")) {
+                        msg_color = SUCCESS_COLOR;
+                    } else if (item.starts_with("#O")) {
+                        msg_color = OTHER_COLOR;
+                    }
+
+                    ImGui::TextColored(msg_color, "%s", item_cstr);
                 }
 
                 // Stolen from imgui_demo.cpp
@@ -190,6 +195,12 @@ namespace boot::window {
                     ExecCommand(string(s));
                 strcpy(s, "");
                 reclaim_focus = true;
+            }
+
+            ImGui::SameLine();
+            if (ImGui::Button("INJECT")) {
+                // TODO: Injection Functionality
+                // TODO: (init.svc, inject.svc, etc)
             }
 
             // Stolen from imgui_demo.cpp
