@@ -70,5 +70,5 @@ bool requestStopService(const string& id) {
 
 void makeServices() {
     requestAddService("example.svc", service_example);
-    requestAddService("ustat.svc", service_ustat);
+    requestAddService("ustat", service_ustat);
 }

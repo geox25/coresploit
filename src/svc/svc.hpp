@@ -61,9 +61,6 @@ public:
     }
 };
 
-extern atomic<bool>                             stop_service;
-extern ThreadSafeQueue<string>                  util_log_stack;
-
 class UnifiedService {
 private:
     atomic<bool> status = true;
@@ -97,6 +94,8 @@ public:
 // TODO: Replace string with more robust ID class?
 extern unordered_map<string, UnifiedService> services;
 
+extern ThreadSafeQueue<string> util_log_stack;
+
 extern bool requestAddService(const string& id, const function<int(const vector<string>&)>& service);
 
 extern bool requestServiceStatus(const string& id);
@@ -109,8 +108,6 @@ extern bool requestRunService(const string& id);
 
 extern bool requestStopService(const string& id);
 
-extern void setServiceMap(unordered_map<string, future<int>>& map);
-
-void makeServices();
+extern void makeServices();
 
 #endif //PXL_SVC_HPP

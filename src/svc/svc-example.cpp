@@ -17,7 +17,7 @@ int service_example(const vector<string>& args) {
         int counter = 1;
 
         // Example of OTHER_COLOR usage would be logging the value of a variable
-        util_log_stack.push("#O [example.svc] >> init value of counter = " + std::to_string(counter));
+        util_log_stack.push("#O [example.svc]: init value of counter = " + std::to_string(counter));
 
         while (!requestServiceStatus("example.svc")) {
             util_log_stack.push("Information Relay " + std::to_string(counter));

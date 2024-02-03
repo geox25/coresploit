@@ -7,6 +7,7 @@
 // Includes for in-house libraries
 #include "boot/trivial-boot.hpp"
 #include "boot/boot.hpp"
+#include "boot/config.hpp"
 
 #define GL_SILENCE_DEPRECATION
 #if defined(IMGUI_IMPL_OPENGL_ES2)
@@ -57,7 +58,7 @@ int main(int, char**) {
 #endif
 
     // Create window with graphics context
-    window = glfwCreateWindow(1280, 720, "Dear ImGui GLFW+OpenGL3 example", nullptr, nullptr);
+    window = glfwCreateWindow(1280, 720, PXL_TITLE_CSTR(), nullptr, nullptr);
     if (window == nullptr)
         return 1;
     glfwMakeContextCurrent(window);
@@ -72,8 +73,8 @@ int main(int, char**) {
     io.SetClipboardTextFn = _IMGUISetClipboardText;
     io.GetClipboardTextFn = _IMGUIGetClipboardText;
 
-    // Setup segoe-ui font size 17
-    ImFont* font = io.Fonts->AddFontFromFileTTF("../rsc/fonts/segoe-ui.ttf", 17.0f, NULL, io.Fonts->GetGlyphRangesDefault());
+    // Setup lucida-console font size 14
+    ImFont* font = io.Fonts->AddFontFromFileTTF("../rsc/fonts/lucida-console.ttf", 14.0f, NULL, io.Fonts->GetGlyphRangesDefault());
 
     // Setup Style
     boot::trivial::MakeStyle(ImGui::GetStyle());
@@ -122,6 +123,9 @@ int main(int, char**) {
         // 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
         if (show_demo_window)
             ImGui::ShowDemoWindow(&show_demo_window);
+
+        ImGui::SetNextWindowPos(ImVec2(0, 0));
+        // ImGui::SetNextWindowSize(ImVec2(1280, 720));
 
         if (show_console)
             boot::window::ShowConsole(show_console);

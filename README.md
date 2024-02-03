@@ -7,7 +7,7 @@
 
 Software Overview:
 - Stable Version: N/A
-- Nightly Version: 24.2-0.1.1
+- Nightly Version: 24.2.3
 - Dependencies:
   - opengl3 (imgui)
   - *? xorg (imgui)*
@@ -20,7 +20,7 @@ Software Overview:
 PXL Functionality:
 - Injection Functionality (init.svc, inject.svc, etc)
 - Service Security Checks & management service (security.svc)
-- More commands like # of active services, cpu/ram usage, etc
+- <s>More commands like # of active services, cpu/ram usage, etc</s>
 - Window docking functionality with other windows (file browser, performance overview, system info)
 
 Main/Addon Functionality:

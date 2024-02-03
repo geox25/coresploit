@@ -59,17 +59,24 @@ namespace boot::window {
                 }
 
                 if (requestValidServiceID(cmd.at(1))) {
-                    // If service is already running
+                    // If PROGRAM is already running
+                    if ((cmd.at(1).find(".svc") == std::string::npos) && !requestServiceStatus(cmd.at(1))) {
+                        requestStopService(cmd.at(1));
+                        futures.erase(cmd.at(1));
+                        AddLog("#O [0] <boot.cpp>: Automatically stopped (program behavior): " + cmd.at(1));
+                    }
+
+                        // If service is already running
                     if (!requestServiceStatus(cmd.at(1))) {
-                        AddLog("#E [0] <boot.cpp> That service is already running! (Try running it again if you believe it has stopped)");
+                        AddLog("#E [0] <boot.cpp>: That service is already running! (Try running it again if you believe it has stopped)");
                         return;
                     }
 
-                    AddLog("Starting service: " + cmd.at(1));
+                    AddLog("#O [0] <boot.cpp>: Starting service: " + cmd.at(1));
                     requestRunService(cmd.at(1));
                     futures.emplace(cmd.at(1), std::async(std::launch::async, [this, cmd] { return requestService(cmd.at(1))(cmd); }));
                 } else {
-                    AddLog("Could not locate service: " + cmd.at(1));
+                    AddLog("#E [0] <boot.cpp>: Could not locate service: " + cmd.at(1));
                 }
             };
             command_map["STOP"]     = [this](const vector<string>& cmd) {
@@ -81,10 +88,13 @@ namespace boot::window {
                     AddLog("Stopping service: " + cmd.at(1));
                     requestStopService(cmd.at(1));
                     futures.erase(cmd.at(1));
-                    AddLog("#O [0] <boot.cpp> unordered_map<string, future<int>> futures length: " + std::to_string(futures.size()));
+                    AddLog("#O [0] <boot.cpp>: unordered_map<string, future<int>> futures length: " + std::to_string(futures.size()));
                 } else {
-                    AddLog("Could not locate service: " + cmd.at(1));
+                    AddLog("#E [0] <boot.cpp>: Could not locate service: " + cmd.at(1));
                 }
+            };
+            command_map["ACTIVE"] = [this](const vector<string>& cmd) {
+                AddLog("#S [0] <boot.cpp>: Active Services: " + std::to_string(futures.size()));
             };
         }
 
@@ -112,6 +122,7 @@ namespace boot::window {
 
         void Draw(const string& title, bool& show_console) {
             ImGui::SetNextWindowSize(DEFAULT_WIN_CONSOLE_SIZE);
+
             if (!ImGui::Begin(title.c_str(), &show_console)) {
                 ImGui::End();
                 return;
@@ -236,15 +247,15 @@ namespace boot::window {
 
         // This function will be run in a separate thread
         [[noreturn]] void monitorFutures() {
-            AddLog("#O [monitorFutures()] <boot.cpp> Futures are now being monitored every 5 seconds in a separate thread");
+            AddLog("#O [monitorFutures()] <boot.cpp>: Futures are now being monitored every 5 seconds in a separate thread");
             while (true) {
                 for (auto it = futures.begin(); it != futures.end(); ) {
                     if (it->second.wait_for(std::chrono::seconds(0)) == std::future_status::ready) {
                         string service_id = it->first;
                         requestStopService(service_id);
                         it = futures.erase(it);
-                        AddLog("#O [monitorFutures()] <boot.cpp> [" + service_id + "] has been erased from futures");
-                        AddLog("#O [monitorFutures()] <boot.cpp> Length of futures: " + std::to_string(futures.size()));
+                        AddLog("#O [monitorFutures()] <boot.cpp>: [" + service_id + "] has been erased from futures");
+                        AddLog("#O [monitorFutures()] <boot.cpp>: Length of futures: " + std::to_string(futures.size()));
                     } else {
                         ++it;
                     }

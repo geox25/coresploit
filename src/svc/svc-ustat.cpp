@@ -27,7 +27,7 @@ static std::string exec(const char* cmd) {
 
 int service_ustat(const vector<string>& args) {
 
-    if (!requestServiceStatus("ustat.svc")) {
+    if (!requestServiceStatus("ustat")) {
         string pid = to_string(getpid());
 
         string cpu_cmd = "ps -p " + pid + " -o %cpu";
