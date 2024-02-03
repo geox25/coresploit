@@ -11,11 +11,15 @@
 #include <condition_variable>
 #include <unordered_map>
 #include <functional>
+#include <vector>
+#include <future>
 
 using std::atomic;
 using std::string;
 using std::unordered_map;
 using std::function;
+using std::vector;
+using std::future;
 
 template<typename T>
 class ThreadSafeQueue {
@@ -63,13 +67,13 @@ extern ThreadSafeQueue<string>                  util_log_stack;
 class UnifiedService {
 private:
     atomic<bool> status = true;
-    function<int()> service;
+    function<int(const vector<string>&)> service;
 public:
-    explicit UnifiedService(const function<int()>& service) {
+    explicit UnifiedService(const function<int(const vector<string>&)>& service) {
         this->service = service;
     }
 
-    function<int()> getService() {
+    function<int(const vector<string>&)> getService() {
         return service;
     }
 
@@ -78,7 +82,7 @@ public:
     }
 
     // TODO: Add error-checking functionality
-    bool start() {
+    bool run() {
         status = false;
         return true;
     }
@@ -93,17 +97,19 @@ public:
 // TODO: Replace string with more robust ID class?
 extern unordered_map<string, UnifiedService> services;
 
-extern bool requestAddService(const string& id, const UnifiedService& service);
+extern bool requestAddService(const string& id, const function<int(const vector<string>&)>& service);
 
 extern bool requestServiceStatus(const string& id);
 
-extern function<int()> requestService(const string& id);
+extern function<int(const vector<string>&)> requestService(const string& id);
 
 extern bool requestValidServiceID(const string& id);
 
-extern bool requestStartService(const string& id);
+extern bool requestRunService(const string& id);
 
 extern bool requestStopService(const string& id);
+
+extern void setServiceMap(unordered_map<string, future<int>>& map);
 
 void makeServices();
 

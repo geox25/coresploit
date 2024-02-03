@@ -34,8 +34,9 @@ add_subdirectory(vendor/glfw)
 add_executable(PXL src/main.cpp
         src/boot/trivial-boot.cpp
         src/boot/boot.cpp
-        src/svc/example-svc.cpp
-        src/svc/svc.cpp)
+        src/svc/svc-example.cpp
+        src/svc/svc.cpp
+        src/svc/svc-ustat.cpp)
 
 # Make sure glfw3, opengl are found
 # find_package(glfw3 REQUIRED)

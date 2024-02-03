@@ -9,6 +9,8 @@
 #include <iterator>
 #include <sstream>
 #include <future>
+#include <fstream>
+#include <chrono>
 #include "imgui.h"
 #include "../svc/svc.hpp"
 #include "config.hpp"
@@ -28,7 +30,7 @@ namespace boot::window {
         bool                ScrollToBottom;
         char                InputBuf[256];
 
-        bool example = false;
+        bool verbose = false;
 
         // Maps string cmd to its corresponding function for execution
         unordered_map<string, function<void(const vector<string>&)>> command_map;
@@ -40,6 +42,8 @@ namespace boot::window {
             // Populate string to function of command_map
             PopulateCommandMap();
             makeServices();
+            std::thread monitorThread(&boot::window::Console::monitorFutures, this);
+            monitorThread.detach(); // detach so it doesn't result in terminate called without an active exception
         }
         ~Console() {
             // Make sure Items vector is empty
@@ -48,16 +52,22 @@ namespace boot::window {
 
         void PopulateCommandMap() {
             command_map["CLEAR"]    = [this](const vector<string>& cmd) { ClearLog(); };
-            command_map["HELP"]     = [this](const vector<string>& cmd) { AddLog("Commands: CLEAR, HELP, START"); };
-            command_map["START"]    = [this](const vector<string>& cmd) {
+            command_map["HELP"]     = [this](const vector<string>& cmd) { AddLog("Commands: CLEAR, HELP, RUN, STOP"); };
+            command_map["RUN"]    = [this](const vector<string>& cmd) {
                 if (cmd.size() < 2) {
                     return;
                 }
 
                 if (requestValidServiceID(cmd.at(1))) {
+                    // If service is already running
+                    if (!requestServiceStatus(cmd.at(1))) {
+                        AddLog("#E [0] <boot.cpp> That service is already running! (Try running it again if you believe it has stopped)");
+                        return;
+                    }
+
                     AddLog("Starting service: " + cmd.at(1));
-                    requestStartService(cmd.at(1));
-                    futures.emplace(cmd.at(1), std::async(std::launch::async, requestService(cmd.at(1))));
+                    requestRunService(cmd.at(1));
+                    futures.emplace(cmd.at(1), std::async(std::launch::async, [this, cmd] { return requestService(cmd.at(1))(cmd); }));
                 } else {
                     AddLog("Could not locate service: " + cmd.at(1));
                 }
@@ -84,7 +94,9 @@ namespace boot::window {
         static void Strtrim(char* s)    { char* str_end = s + strlen(s); while (str_end > s && str_end[-1] == ' ') str_end--; *str_end = 0; }
 
         void AddLog(const string& log) {
-            Items.push_back(log);
+            // Add msg to log if it isn't other OR if verbose is enabled
+            if (!log.starts_with("#O") || verbose)
+                Items.push_back(log);
         }
 
         void ClearLog() {
@@ -123,7 +135,7 @@ namespace boot::window {
 
             // Options popup menu with example checkbox
             if (ImGui::BeginPopup("Options")) {
-                ImGui::Checkbox("Example", &example);
+                ImGui::Checkbox("Verbose", &verbose);
                 ImGui::EndPopup();
             }
 
@@ -194,7 +206,8 @@ namespace boot::window {
                 if (s[0])
                     ExecCommand(string(s));
                 strcpy(s, "");
-                reclaim_focus = true;
+                // Fixes losing focus after enter (maintain focus until clicked off)
+                ImGui::SetKeyboardFocusHere(-1);
             }
 
             ImGui::SameLine();
@@ -205,9 +218,9 @@ namespace boot::window {
 
             // Stolen from imgui_demo.cpp
             // Autofocus on window apparition
-            ImGui::SetItemDefaultFocus();
+            /*ImGui::SetItemDefaultFocus();
             if (reclaim_focus)
-                ImGui::SetKeyboardFocusHere(-1); // Autofocus previous widget
+                ImGui::SetKeyboardFocusHere(-1); // Autofocus previous widget*/
 
             ImGui::End();
         }
@@ -228,6 +241,27 @@ namespace boot::window {
             // If cmd key (arg 0) is found in command_map then call it
             if (result != command_map.end()) {
                 result->second(cmd_words);
+            }
+        }
+
+        // This function will be run in a separate thread
+        [[noreturn]] void monitorFutures() {
+            AddLog("#O [monitorFutures()] <boot.cpp> Futures are now being monitored every 5 seconds in a separate thread");
+            while (true) {
+                for (auto it = futures.begin(); it != futures.end(); ) {
+                    if (it->second.wait_for(std::chrono::seconds(0)) == std::future_status::ready) {
+                        string service_id = it->first;
+                        requestStopService(service_id);
+                        it = futures.erase(it);
+                        AddLog("#O [monitorFutures()] <boot.cpp> [" + service_id + "] has been erased from futures");
+                        AddLog("#O [monitorFutures()] <boot.cpp> Length of futures: " + std::to_string(futures.size()));
+                    } else {
+                        ++it;
+                    }
+                }
+
+                // Sleep for a reasonable interval before checking again
+                std::this_thread::sleep_for(std::chrono::milliseconds(250));
             }
         }
 
