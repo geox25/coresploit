@@ -81,8 +81,6 @@ namespace boot::window {
                     AddLog("Stopping service: " + cmd.at(1));
                     requestStopService(cmd.at(1));
                     futures.erase(cmd.at(1));
-
-                    // TODO: Only show if debug-msgs enabled (verbose mode)
                     AddLog("#O [0] <boot.cpp> unordered_map<string, future<int>> futures length: " + std::to_string(futures.size()));
                 } else {
                     AddLog("Could not locate service: " + cmd.at(1));
@@ -169,9 +167,6 @@ namespace boot::window {
                     if (!Filter.PassFilter(item_cstr))
                         continue;
 
-                    // Old way of logging messages without color
-                    // ImGui::TextUnformatted(item_cstr);
-
                     ImVec4 msg_color = NORMAL_COLOR;
 
                     if (item.starts_with("#E")) {
@@ -215,12 +210,6 @@ namespace boot::window {
                 // TODO: Injection Functionality
                 // TODO: (init.svc, inject.svc, etc)
             }
-
-            // Stolen from imgui_demo.cpp
-            // Autofocus on window apparition
-            /*ImGui::SetItemDefaultFocus();
-            if (reclaim_focus)
-                ImGui::SetKeyboardFocusHere(-1); // Autofocus previous widget*/
 
             ImGui::End();
         }

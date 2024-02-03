@@ -103,7 +103,6 @@ int main(int, char**) {
     bool show_console = true;
 
     bool show_demo_window = false;
-    bool show_another_window = false;
     ImVec4 clear_color = ImVec4(0.18f, 0.18f, 0.18f, 1.0f);
 
     // Main loop
