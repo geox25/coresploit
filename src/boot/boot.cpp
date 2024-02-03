@@ -28,7 +28,7 @@ namespace boot::window {
         ImGuiTextFilter     Filter;
         bool                AutoScroll;
         bool                ScrollToBottom;
-        char                InputBuf[256];
+        char                InputBuf[256]{};
 
         bool verbose = false;
 
@@ -157,7 +157,8 @@ namespace boot::window {
 
                 // Merge log messages from util_log_stack to main Items vector
                 while (util_log_stack.size() != 0) {
-                    Items.push_back(util_log_stack.front());
+                    if (!util_log_stack.front().starts_with("#O") || verbose)
+                        Items.push_back(util_log_stack.front());
                     util_log_stack.pop();
                 }
 
