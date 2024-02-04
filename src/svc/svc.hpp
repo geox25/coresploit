@@ -96,18 +96,18 @@ extern unordered_map<string, UnifiedService> services;
 
 extern ThreadSafeQueue<string> util_log_stack;
 
-extern bool requestAddService(const string& id, const function<int(const vector<string>&)>& service);
+extern bool requestAddRoutine(const string& id, const function<int(const vector<string>&)>& service);
 
-extern bool requestServiceStatus(const string& id);
+extern bool requestRoutineStatus(const string& id);
 
-extern function<int(const vector<string>&)> requestService(const string& id);
+extern function<int(const vector<string>&)> requestRoutine(const string& id);
 
-extern bool requestValidServiceID(const string& id);
+extern bool requestValidRoutineID(const string& id);
 
-extern bool requestRunService(const string& id);
+extern bool requestRunRoutine(const string& id);
 
-extern bool requestStopService(const string& id);
+extern bool requestStopRoutine(const string& id);
 
-extern void makeServices();
+extern void makeRoutines();
 
 #endif //PXL_SVC_HPP

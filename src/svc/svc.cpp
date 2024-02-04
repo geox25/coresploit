@@ -11,7 +11,7 @@
 
 // Include services
 #include "svc-example.hpp"
-#include "svc-ustat.hpp"
+#include "prg-ustat.hpp"
 
 using std::atomic;
 using std::string;
@@ -24,7 +24,7 @@ using std::future;
 ThreadSafeQueue<string>                 util_log_stack = ThreadSafeQueue<string>();
 unordered_map<string, UnifiedService>   services;
 
-bool requestAddService(const string& id, const function<int(const vector<string>&)>& service) {
+bool requestAddRoutine(const string& id, const function<int(const vector<string>&)>& service) {
     // Reject request if map of service_id->UnifiedService already contains id
     if (services.contains(id)) {
         return false;
@@ -35,7 +35,7 @@ bool requestAddService(const string& id, const function<int(const vector<string>
     return true;
 }
 
-bool requestServiceStatus(const string& id) {
+bool requestRoutineStatus(const string& id) {
     if (services.contains(id)) {
         return services.at(id).getStatus();
     } else {
@@ -43,15 +43,15 @@ bool requestServiceStatus(const string& id) {
     }
 }
 
-function<int(const vector<string>&)> requestService(const string& id) {
+function<int(const vector<string>&)> requestRoutine(const string& id) {
     return services.at(id).getService();
 }
 
-bool requestValidServiceID(const string& id) {
+bool requestValidRoutineID(const string& id) {
     return services.contains(id);
 }
 
-bool requestRunService(const string& id) {
+bool requestRunRoutine(const string& id) {
     if (services.contains(id)) {
         return services.at(id).run();
     } else {
@@ -59,7 +59,7 @@ bool requestRunService(const string& id) {
     }
 }
 
-bool requestStopService(const string& id) {
+bool requestStopRoutine(const string& id) {
     if (services.contains(id)) {
         services.at(id).stop();
         return true;
@@ -68,7 +68,7 @@ bool requestStopService(const string& id) {
     }
 }
 
-void makeServices() {
-    requestAddService("example.svc", service_example);
-    requestAddService("ustat", service_ustat);
+void makeRoutines() {
+    requestAddRoutine("example.svc", service_example);
+    requestAddRoutine("ustat", service_ustat);
 }

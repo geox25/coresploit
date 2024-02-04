@@ -36,7 +36,7 @@ add_executable(PXL src/main.cpp
         src/boot/boot.cpp
         src/svc/svc-example.cpp
         src/svc/svc.cpp
-        src/svc/svc-ustat.cpp)
+        src/svc/prg-ustat.cpp)
 
 # Make sure glfw3, opengl are found
 # find_package(glfw3 REQUIRED)
