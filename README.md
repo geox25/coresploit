@@ -7,7 +7,7 @@
 
 Software Overview:
 - Stable Version: N/A
-- Nightly Version: 24.2.3
+- Nightly Version: 24.2.4
 - Dependencies:
   - opengl3 (imgui)
   - *? xorg (imgui)*
