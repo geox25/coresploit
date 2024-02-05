@@ -247,7 +247,6 @@ namespace boot::window {
             ImGui::EndChild();
             ImGui::Separator();
 
-            bool reclaim_focus = false;
             // Flags to configure behavior of input text
             ImGuiInputTextFlags input_text_flags = ImGuiInputTextFlags_EnterReturnsTrue | ImGuiInputTextFlags_EscapeClearsAll | ImGuiInputTextFlags_CallbackCompletion | ImGuiInputTextFlags_CallbackHistory;
             if (ImGui::InputText("Input", InputBuf, IM_ARRAYSIZE(InputBuf), input_text_flags, &TextEditCallbackStub, (void*)this)) {
@@ -311,10 +310,10 @@ namespace boot::window {
 
         static int TextEditCallbackStub(ImGuiInputTextCallbackData* data) {
             auto* console = (Console*)data->UserData;
-            return console->TextEditCallback(data);
+            return boot::window::Console::TextEditCallback(data);
         }
 
-        int TextEditCallback(ImGuiInputTextCallbackData* data) {
+        static int TextEditCallback(ImGuiInputTextCallbackData* data) {
             return 0;
         }
     };
