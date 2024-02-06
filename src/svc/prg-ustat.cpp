@@ -82,7 +82,81 @@ int service_ustat_unix() { return -1; }
 #endif
 
 #if defined(_WIN64)
+typedef long long int64_t;
+typedef unsigned long long uint64_t;
 
+/// time convert
+static uint64_t file_time_2_utc(const FILETIME *ftime)
+{
+    LARGE_INTEGER li;
+
+    li.LowPart = ftime->dwLowDateTime;
+    li.HighPart = ftime->dwHighDateTime;
+    return li.QuadPart;
+}
+
+// get CPU num
+static int get_processor_number()
+{
+    SYSTEM_INFO info;
+    GetSystemInfo(&info);
+    return (int)info.dwNumberOfProcessors;
+}
+
+int win64_getCpuUsage(int pid)
+{
+    static int processor_count_ = -1;
+    static int64_t last_time_ = 0;
+    static int64_t last_system_time_ = 0;
+
+    FILETIME now;
+    FILETIME creation_time;
+    FILETIME exit_time;
+    FILETIME kernel_time;
+    FILETIME user_time;
+    int64_t system_time;
+    int64_t time;
+    int64_t system_time_delta;
+    int64_t time_delta;
+
+    int cpu = -1;
+
+    if (processor_count_ == -1)
+    {
+        processor_count_ = get_processor_number();
+    }
+
+    GetSystemTimeAsFileTime(&now);
+
+    HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, false, pid);
+    if (!GetProcessTimes(hProcess, &creation_time, &exit_time, &kernel_time, &user_time))
+    {
+        // can not find the process
+        exit(EXIT_FAILURE);
+    }
+    system_time = (file_time_2_utc(&kernel_time) + file_time_2_utc(&user_time)) / processor_count_;
+    time = file_time_2_utc(&now);
+
+    if ((last_system_time_ == 0) || (last_time_ == 0))
+    {
+        last_system_time_ = system_time;
+        last_time_ = time;
+        return win64_getCpuUsage(pid);
+    }
+
+    system_time_delta = system_time - last_system_time_;
+    time_delta = time - last_time_;
+
+    if (time_delta == 0)
+    {
+        return win64_getCpuUsage(pid);
+    }
+
+    cpu = (int)((system_time_delta * 100 + time_delta / 2) / time_delta);
+    last_system_time_ = system_time;
+    last_time_ = time;
+    return cpu;
+}
 
 // PRG-USTAT CODE TO BE RAN ON WINDOWS 64-BIT SYSTEMS
 int service_ustat_win64() {
@@ -94,8 +168,9 @@ int service_ustat_win64() {
     SIZE_T memoryUsage = pmc.PrivateUsage;
 
     // TODO: Windows-specific code for CPU usage
+    int cpuUsage = win64_getCpuUsage(GetCurrentProcessId());
 
-    util_log_stack.push("#S [prg-ustat]: Memory Usage: " + to_string(memoryUsage / 1024 / 1024) + " MB");
+    util_log_stack.push("#S [prg-ustat]: CPU Usage: " + to_string(cpuUsage) + '%' + " Memory Usage: " + to_string(memoryUsage / 1024 / 1024) + " MB");
 
     return 0;
 }
