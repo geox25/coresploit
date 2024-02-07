@@ -24,6 +24,7 @@ PXL Functionality:
 - Window docking functionality with other windows (file browser, performance overview, system info)
 
 Main/Addon Functionality:
+- Encrypted notepad/files with cloud storage support
 - Cross-platform keyloggers
 - Cross-platform proccess monitoring
 - Cross-platform spyware/authware detection
