@@ -18,6 +18,7 @@ Software Overview:
 ## Roadmap
 
 PXL Functionality:
+- Included Password Cracking Utils
 - Injection Functionality (init.svc, inject.svc, etc)
 - Service Security Checks & management service (security.svc)
 - <s>More commands like # of active services, cpu/ram usage, etc</s>
