@@ -1,4 +1,4 @@
-# PXL Private Repo
+# PXL Private Repository
 
 <!--[![GitHub tag](https://img.shields.io/github/tag/geox25/PXL-private-codebase?include_prereleases=&sort=semver&color=blue)](https://github.com/geox25/PXL-private-codebase/releases/)
 ![Lines of code](https://img.shields.io/tokei/lines/:provider/:user/:repo)
