@@ -17,6 +17,11 @@ Software Overview:
 
 ## Roadmap
 
+Immediate Todo:
+- (security.svc) Verifying that the services are allowed to run
+- (security.svc) Verifying that the services have not been tampered with
+- Encryption/Source Guarding -> Executable Binary
+
 PXL Functionality:
 - Included Password Cracking Utils
 - Injection Functionality (init.svc, inject.svc, etc)
