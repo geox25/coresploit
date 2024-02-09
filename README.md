@@ -1,19 +1,14 @@
 # PXL Private Repository
 
-<!--[![GitHub tag](https://img.shields.io/github/tag/geox25/PXL-private-codebase?include_prereleases=&sort=semver&color=blue)](https://github.com/geox25/PXL-private-codebase/releases/)
-![Lines of code](https://img.shields.io/tokei/lines/:provider/:user/:repo)
--->
-[![License](https://img.shields.io/badge/License-Private%2FProprietary-blue)](#license)
+[![Stable - N/A](https://img.shields.io/badge/Stable-N%2FA-2ea44f?style=for-the-badge)](https://)
+[![Nightly - v1.1](https://img.shields.io/badge/Nightly-v1.1-852ea4?style=for-the-badge)](https://)
+[![License - Private/Proprietary](https://img.shields.io/badge/License-Private%2FProprietary-blue?style=for-the-badge)](https://)
+[![view - Documentation](https://img.shields.io/badge/view-Documentation-blue?style=for-the-badge)](/docs/ "Go to project documentation")
 
-Software Overview:
-- Latest Stable: N/A
-- Latest Nightly: v1.1
-- Dependencies:
-  - opengl3 (imgui)
-  - *? xorg (imgui)*
-  - *? xorg-dev (imgui)*
-
----
+Personal Exploitation Library, or PXL for short, is a software-suite that contains different tools and programs for both exploitation
+and specialized tasks that would become too messy if they were packaged separately. The goal for PXL is to have a secure, high performance,
+and highly customizable environment with numerous integrated systems. PXL is intended to be ran on Windows, Mac, and Linux. However, it
+has only been tested on Windows and Linux right now.
 
 ## Roadmap
 
