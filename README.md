@@ -21,6 +21,9 @@ Immediate Todo:
 - (security.svc) Verifying that the services are allowed to run
 - (security.svc) Verifying that the services have not been tampered with
 - Encryption/Source Guarding -> Executable Binary
+- Setup Library Infrastructure
+- Add ``win64-basic_keylog`` to library (Visual studio)
+- Add ``secretsdump`` to library (Python Script)
 
 PXL Functionality:
 - Included Password Cracking Utils
