@@ -1,6 +1,0 @@
-Modified 1/25/2024
-
-Ubuntu Package Dependencies:
-xorg                (imgui)
-xorg-dev            (imgui)
-opengl3             (imgui)
