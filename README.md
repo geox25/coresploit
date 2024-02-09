@@ -6,8 +6,8 @@
 [![License](https://img.shields.io/badge/License-Private%2FProprietary-blue)](#license)
 
 Software Overview:
-- Stable Version: N/A
-- Nightly Version: 24.2.4
+- Latest Stable: N/A
+- Latest Nightly: v1.1
 - Dependencies:
   - opengl3 (imgui)
   - *? xorg (imgui)*
