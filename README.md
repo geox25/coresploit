@@ -10,6 +10,15 @@ and specialized tasks that would become too messy if they were packaged separate
 and highly customizable environment with numerous integrated systems. PXL is intended to be ran on Windows, Mac, and Linux. However, it
 has only been tested on Windows and Linux right now.
 
+## Release Schedule
+Precompiled binaries are available for Windows and Linux and are usually shipped with each stable release. During the beginning of a given month,
+some nightly releases will be made containing experimental features and bug fixes. Towards the middle to end of a given month, there will be at least
+one stable release that is much more polished and contains more features.
+
+## Installation
+PXL can be easily compiled from source (especially on CLion) however precompiled binaries are also available for each stable release. If you compile from
+source, make sure OpenGL is installed and available on your system. 
+
 ## Roadmap
 
 Immediate Todo:
@@ -45,8 +54,6 @@ Main/Addon Functionality:
 [![view - Documentation](https://img.shields.io/badge/view-Documentation-blue?style=for-the-badge)](/docs/ "Go to project documentation")
 
 </div>
-
----
 
 ## License
 
