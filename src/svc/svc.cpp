@@ -37,6 +37,8 @@ unordered_map<string, future<int>>      futures;
 unordered_map<string, future<int>>      system_services_futures;
 unordered_map<string, UnifiedService>   system_services;
 
+atomic<bool> skipErase = false;
+
 bool addNormalRoutine(const string& id, const function<int(const vector<string>&)>& service) {
     // Do not add if already contains id
     if (services.contains(id)) {
@@ -95,8 +97,10 @@ bool requestRunRoutine(const vector<string>& cmd) {
 bool requestStopRoutine(const string& id) {
     if (services.contains(id)) {
         services.at(id).stop();
-        if (futures.contains(id))
+        if (futures.contains(id)) {
+            skipErase = true;
             futures.erase(id);
+        }
         log_util.push("#O [0] <svc.cpp>: unordered_map<string, future<int>> futures length: " + std::to_string(futures.size()));
         return true;
     } else {
@@ -138,6 +142,11 @@ void monitor_futures() {
 
         for (auto it = futures.begin(); it != futures.end(); ) {
             if (it->second.wait_for(std::chrono::seconds(0)) == std::future_status::ready) {
+                if (skipErase) {
+                    skipErase = false;
+                    continue;
+                }
+
                 string service_id = it->first;
                 services.at(service_id).stop();
                 it = futures.erase(it);
