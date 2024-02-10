@@ -224,12 +224,25 @@ namespace boot::window {
                 }
 
                 for (const string& item : routine::Items) {
-                    const char* item_cstr = item.c_str();
-
-                    if (!filter.PassFilter(item_cstr))
+                    if (!filter.PassFilter(item.c_str()))
                         continue;
 
                     ImVec4 msg_color = NORMAL_COLOR;
+
+                    string modified_item;
+                    int pos = 0;
+                    for (const char& ch : item) {
+                        if (ch == '\n') {
+                            pos = 0;
+                        }
+                        if (pos == 150) {
+                            modified_item.append("\n");
+                            pos = 0;
+                        }
+                        modified_item += ch;
+                        pos++;
+                    }
+                    const char* item_cstr = modified_item.c_str();
 
                     if (item.starts_with("#E")) {
                         msg_color = ERROR_COLOR;

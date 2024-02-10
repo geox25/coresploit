@@ -107,7 +107,7 @@ void monitor_system_futures() {
             requestStopRoutine(service_id);
             it = system_services_futures.erase(it);
             if (service_id == "security.svc") {
-                log_system.push("#Security [monitor_system_futures()] <svc.cpp>: security.svc has been removed from system_services_futures! This is usually a result of an early\n return due to an error. Please restart PXL.");
+                log_system.push("#Security [monitor_system_futures()] <svc.cpp>: security.svc has been removed from system_services_futures! This is usually a result of an early return due to an error. Please restart PXL.");
             } else {
                 log_system.push("#O [monitor_system_futures()] <svc.cpp>: [" + service_id +
                                 "] has been erased from system futures");
