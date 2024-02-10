@@ -3,7 +3,7 @@
 - Added separate `system/security` directories in `svc/` for services that are system related (such as `security.svc`)
 - Added separate `system_services` variable for system services
 - Added `log_system` log stack for system services
-
+- Added `monitor_system_futures` called by `monitor_futures` (does not have its own thread to save resources)
 
 ---
 - Renamed log stack variables from `util_log_stack` to more concise `log_util`

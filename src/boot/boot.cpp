@@ -21,7 +21,7 @@ using std::string, std::vector, std::unordered_map, std::function, std::istream_
 namespace boot::routine {
     static unordered_map<string, future<int>> futures;
     static vector<string> Items;
-    static bool verbose = false;
+    static bool verbose = true;
 
     void AddLog(const string& log) {
         // Add msg to log if it isn't other OR if verbose is enabled
@@ -235,6 +235,8 @@ namespace boot::window {
                         msg_color = ERROR_COLOR;
                     } else if (item.starts_with("#W")) {
                         msg_color = WARNING_COLOR;
+                    } else if (item.starts_with("#Security")) {
+                        msg_color = SECURITY_WARNING_COLOR;
                     } else if (item.starts_with("#S")) {
                         msg_color = SUCCESS_COLOR;
                     } else if (item.starts_with("#O")) {
@@ -307,7 +309,7 @@ namespace boot::window {
                         requestStopRoutine(service_id);
                         it = routine::futures.erase(it);
                         AddLog("#O [monitor_futures()] <boot.cpp>: [" + service_id + "] has been erased from futures");
-                        AddLog("#O [monitor_futures()] <boot.cpp>: Length of futures: " + std::to_string(routine::futures.size()));
+                        AddLog("#O [monitor_futures()] <boot.cpp>: Futures Length: " + std::to_string(routine::futures.size()));
                     } else {
                         ++it;
                     }

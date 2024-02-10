@@ -101,14 +101,18 @@ bool requestStopRoutine(const string& id) {
 // This function will be run in monitor_futures() thread in boot.cpp
 // It does not have its own thread in order to save resources
 void monitor_system_futures() {
-    log_system.push("#O [monitor_futures()] <svc.cpp>: System Futures are now being monitored every 0.25 seconds in a separate thread");
     for (auto it = system_services_futures.begin(); it != system_services_futures.end(); ) {
         if (it->second.wait_for(std::chrono::seconds(0)) == std::future_status::ready) {
             string service_id = it->first;
             requestStopRoutine(service_id);
             it = system_services_futures.erase(it);
-            log_system.push("#O [monitor_futures()] <svc.cpp>: [" + service_id + "] has been erased from futures");
-            log_system.push("#O [monitor_futures()] <svc.cpp>: Length of futures: " + std::to_string(system_services_futures.size()));
+            if (service_id == "security.svc") {
+                log_system.push("#Security [monitor_system_futures()] <svc.cpp>: security.svc has been removed from system_services_futures! This is usually a result of an early\n return due to an error. Please restart PXL.");
+            } else {
+                log_system.push("#O [monitor_system_futures()] <svc.cpp>: [" + service_id +
+                                "] has been erased from system futures");
+            }
+            log_system.push("#O [monitor_system_futures()] <svc.cpp>: System Futures Length: " + std::to_string(system_services_futures.size()));
         } else {
             ++it;
         }
