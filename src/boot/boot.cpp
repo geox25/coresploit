@@ -19,23 +19,22 @@
 using std::string, std::vector, std::unordered_map, std::function, std::istream_iterator, std::stringstream, std::transform, std::future, std::function;
 
 namespace boot::routine {
-    static unordered_map<string, future<int>> futures;
     static vector<string> Items;
     static bool verbose = true;
 
     void AddLog(const string& log) {
         // Add msg to log if it isn't other OR if verbose is enabled
         if (!log.starts_with("#O") || verbose)
-            routine::Items.push_back(log);
+            Items.push_back(log);
     }
 
     static void ClearLog() {
-        routine::Items.clear();
+        Items.clear();
     }
 
     static void CopyItemsToClipboard() {
         string clipboardBuffer;
-        for (const string& item : routine::Items) {
+        for (const string& item : Items) {
             clipboardBuffer.append(item + '\n');
         }
         ImGui::SetClipboardText(clipboardBuffer.c_str());
@@ -47,14 +46,12 @@ namespace boot::routine {
         // then automatically stop it first.
         if ((cmd.at(1).find(".svc") == std::string::npos) && !requestRoutineStatus(cmd.at(1))) {
             requestStopRoutine(cmd.at(1));
-            futures.erase(cmd.at(1));
             AddLog("#O [0] <boot.cpp>: Automatically stopped (program behavior): " + cmd.at(1));
         }
 
         // Now the program can be started again
         AddLog("#O [0] <boot.cpp>: Starting: " + cmd.at(1));
-        requestRunRoutine(cmd.at(1));
-        routine::futures.emplace(cmd.at(1), std::async(std::launch::async, [cmd] { return requestRoutine(cmd.at(1))(cmd); }));
+        requestRunRoutine(cmd);
     }
 
     void runRoutineAsService(const vector<string>& cmd) {
@@ -67,8 +64,7 @@ namespace boot::routine {
 
         // Otherwise, start the service
         AddLog("#O [0] <boot.cpp>: Starting: " + cmd.at(1));
-        requestRunRoutine(cmd.at(1));
-        routine::futures.emplace(cmd.at(1), std::async(std::launch::async, [cmd] { return requestRoutine(cmd.at(1))(cmd); }));
+        requestRunRoutine(cmd);
     }
 }
 
@@ -94,8 +90,7 @@ namespace boot::window {
             // Populate string to function of command_map
             PopulateCommandMap();
             makeRoutines();
-            std::thread monitorThread(&boot::window::Console::monitor_futures, this);
-            monitorThread.detach(); // detach so it doesn't result in terminate called without an active exception
+            start_monitor_futures();
         }
         ~Console() {
             // Make sure Items vector is empty
@@ -120,14 +115,11 @@ namespace boot::window {
                     // If PROGRAM is already running
                     if ((cmd.at(1).find(".svc") == std::string::npos) && !requestRoutineStatus(cmd.at(1))) {
                         requestStopRoutine(cmd.at(1));
-                        routine::futures.erase(cmd.at(1));
                         AddLog("#O [0] <boot.cpp>: Automatically stopped (program behavior): " + cmd.at(1));
                     }
 
                     AddLog("#O [0] <boot.cpp>: Starting: " + cmd.at(1));
-                    requestRunRoutine(cmd.at(1));
-                    routine::futures.emplace(cmd.at(1), std::async(std::launch::async, [this, cmd] { return requestRoutine(
-                            cmd.at(1))(cmd); }));
+                    requestRunRoutine(cmd);
                 } else {
                     AddLog("#E [0] <boot.cpp>: Could not locate service: " + cmd.at(1));
                 }
@@ -140,14 +132,12 @@ namespace boot::window {
                 if (requestValidRoutineID(cmd.at(1))) {
                     AddLog("Stopping service: " + cmd.at(1));
                     requestStopRoutine(cmd.at(1));
-                    routine::futures.erase(cmd.at(1));
-                    AddLog("#O [0] <boot.cpp>: unordered_map<string, future<int>> futures length: " + std::to_string(routine::futures.size()));
                 } else {
                     AddLog("#E [0] <boot.cpp>: Could not locate service: " + cmd.at(1));
                 }
             };
             command_map["ACTIVE"] = [this](const vector<string>& cmd) {
-                AddLog("#S [0] <boot.cpp>: Active Services: " + std::to_string(routine::futures.size()));
+                show_active_services();
             };
 
             /*
@@ -306,30 +296,6 @@ namespace boot::window {
             // If cmd key (arg 0) is found in command_map then call it
             if (result != command_map.end()) {
                 result->second(cmd_words);
-            }
-        }
-
-        // This function will be run in a separate thread
-        [[noreturn]] void monitor_futures() {
-            AddLog("#O [monitor_futures()] <boot.cpp>: Futures are now being monitored every 0.25 seconds in a separate thread");
-            while (true) {
-                // Monitor system futures of svc.cpp
-                monitor_system_futures();
-
-                for (auto it = routine::futures.begin(); it != routine::futures.end(); ) {
-                    if (it->second.wait_for(std::chrono::seconds(0)) == std::future_status::ready) {
-                        string service_id = it->first;
-                        requestStopRoutine(service_id);
-                        it = routine::futures.erase(it);
-                        AddLog("#O [monitor_futures()] <boot.cpp>: [" + service_id + "] has been erased from futures");
-                        AddLog("#O [monitor_futures()] <boot.cpp>: Futures Length: " + std::to_string(routine::futures.size()));
-                    } else {
-                        ++it;
-                    }
-                }
-
-                // Sleep for a reasonable interval before checking again
-                std::this_thread::sleep_for(std::chrono::milliseconds(250));
             }
         }
 

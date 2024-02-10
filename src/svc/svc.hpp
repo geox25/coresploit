@@ -106,12 +106,14 @@ extern function<int(const vector<string>&)> requestRoutine(const string& id);
 
 extern bool requestValidRoutineID(const string& id);
 
-extern bool requestRunRoutine(const string& id);
+extern bool requestRunRoutine(const vector<string>& id);
 
 extern bool requestStopRoutine(const string& id);
 
 extern void makeRoutines();
 
-extern void monitor_system_futures();
+extern void start_monitor_futures();
+
+extern void show_active_services();
 
 #endif //PXL_SVC_HPP

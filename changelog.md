@@ -7,6 +7,7 @@
 - Added text wrap of logs by adding a `\n` every 150 characters
 
 ---
+- Moved `futures` from `boot.cpp` to `svc.cpp`
 - Renamed log stack variables from `util_log_stack` to more concise `log_util`
 - Changed comments that were too long
 - Minor refactoring of guards in `run` command code
