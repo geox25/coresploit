@@ -24,6 +24,7 @@ void security_main() {
     // next will perform security checks
     while(1) {
         // while true, do nothing for now ...
+        std::this_thread::sleep_for(std::chrono::milliseconds(250));
     }
 }
 
