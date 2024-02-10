@@ -6,9 +6,8 @@
 #define PXL_SVC_EXAMPLE_HPP
 
 #include <string>
-#include <queue>
 
-using std::string, std::queue;
+using std::string;
 
 int service_example(const vector<string>& args);
 

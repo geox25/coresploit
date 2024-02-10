@@ -7203,7 +7203,7 @@ struct ExampleAppConsole
             AddLog("Unknown command: '%s'\n", command_line);
         }
 
-        // On command input, we scroll to bottom even if AutoScroll==false
+        // On command input, we scroll to bottom even if auto_scroll==false
         ScrollToBottom = true;
     }
 

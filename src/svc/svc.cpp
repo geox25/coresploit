@@ -9,6 +9,9 @@
 #include <future>
 #include "svc.hpp"
 
+// Include system services
+#include "system/security/svc-security.hpp"
+
 // Include services
 #include "svc-example.hpp"
 #include "prg-ustat.hpp"
@@ -21,17 +24,31 @@ using std::function;
 using std::vector;
 using std::future;
 
-ThreadSafeQueue<string>                 util_log_stack = ThreadSafeQueue<string>();
+ThreadSafeQueue<string>                 log_system = ThreadSafeQueue<string>();
+ThreadSafeQueue<string>                 log_util = ThreadSafeQueue<string>();
+
+unordered_map<string, UnifiedService>   system_services;
 unordered_map<string, UnifiedService>   services;
 
-bool requestAddRoutine(const string& id, const function<int(const vector<string>&)>& service) {
-    // Reject request if map of service_id->UnifiedService already contains id
+bool addNormalRoutine(const string& id, const function<int(const vector<string>&)>& service) {
+    // Do not add if already contains id
     if (services.contains(id)) {
         return false;
     }
 
+    // Otherwise add
     services.insert(std::make_pair(id, service));
+    return true;
+}
 
+bool addSystemRoutine(const string& id, const function<int(const vector<string>&)>& service) {
+    // Do not add if already contains id
+    if (system_services.contains(id)) {
+        return false;
+    }
+
+    // Otherwise add
+    system_services.insert(std::make_pair(id, service));
     return true;
 }
 
@@ -69,6 +86,8 @@ bool requestStopRoutine(const string& id) {
 }
 
 void makeRoutines() {
-    requestAddRoutine("example.svc", service_example);
-    requestAddRoutine("ustat", service_ustat);
+    addSystemRoutine("security.svc", service_security);
+
+    addNormalRoutine("example.svc", service_example);
+    addNormalRoutine("ustat", service_ustat);
 }

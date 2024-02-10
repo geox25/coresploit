@@ -79,17 +79,17 @@ namespace boot::window {
     // Definition for PXL-Console Window
     struct Console {
 
-        ImGuiTextFilter     Filter;
-        bool                AutoScroll;
-        bool                ScrollToBottom;
-        char                InputBuf[256]{};
+        ImGuiTextFilter     filter;
+        bool                auto_scroll;
+        bool                scroll_to_bottom;
+        char                input_buf[256]{};
 
         // Maps string cmd to its corresponding function for execution
         unordered_map<string, function<void(const vector<string>&)>> command_map;
 
         Console() {
-            AutoScroll = true;
-            ScrollToBottom = false;
+            auto_scroll = true;
+            scroll_to_bottom = false;
 
             // Populate string to function of command_map
             PopulateCommandMap();
@@ -195,7 +195,7 @@ namespace boot::window {
             if (ImGui::Button("Options"))
                 ImGui::OpenPopup("Options");
             ImGui::SameLine();
-            Filter.Draw(R"(Filter ("incl,-excl") ("error"))", 180);
+            filter.Draw(R"(Filter ("incl,-excl") ("error"))", 180);
             ImGui::Separator();
 
             // DEBUG CODE FOR SHOWING WINDOW SIZE
@@ -209,17 +209,17 @@ namespace boot::window {
             const float footer_height_to_reserve = ImGui::GetStyle().ItemSpacing.y + ImGui::GetFrameHeightWithSpacing();
             if (ImGui::BeginChild("ScrollingRegion", ImVec2(0, -footer_height_to_reserve), ImGuiChildFlags_None, ImGuiWindowFlags_HorizontalScrollbar)) {
 
-                // Merge log messages from util_log_stack to main Items vector
-                while (util_log_stack.size() != 0) {
-                    if (!util_log_stack.front().starts_with("#O") || verbose)
-                        routine::Items.push_back(util_log_stack.front());
-                    util_log_stack.pop();
+                // Merge log messages from log_util to main Items vector
+                while (log_util.size() != 0) {
+                    if (!log_util.front().starts_with("#O") || verbose)
+                        routine::Items.push_back(log_util.front());
+                    log_util.pop();
                 }
 
                 for (const string& item : routine::Items) {
                     const char* item_cstr = item.c_str();
 
-                    if (!Filter.PassFilter(item_cstr))
+                    if (!filter.PassFilter(item_cstr))
                         continue;
 
                     ImVec4 msg_color = NORMAL_COLOR;
@@ -240,17 +240,17 @@ namespace boot::window {
                 // Stolen from imgui_demo.cpp
                 // Keep up at the bottom of the scroll region if we were already at the bottom at the beginning of the frame.
                 // Using a scrollbar or mouse-wheel will take away from the bottom edge.
-                if (ScrollToBottom || (AutoScroll && ImGui::GetScrollY() >= ImGui::GetScrollMaxY()))
+                if (scroll_to_bottom || (auto_scroll && ImGui::GetScrollY() >= ImGui::GetScrollMaxY()))
                     ImGui::SetScrollHereY(1.0f);
-                ScrollToBottom = false;
+                scroll_to_bottom = false;
             }
             ImGui::EndChild();
             ImGui::Separator();
 
             // Flags to configure behavior of input text
             ImGuiInputTextFlags input_text_flags = ImGuiInputTextFlags_EnterReturnsTrue | ImGuiInputTextFlags_EscapeClearsAll | ImGuiInputTextFlags_CallbackCompletion | ImGuiInputTextFlags_CallbackHistory;
-            if (ImGui::InputText("Input", InputBuf, IM_ARRAYSIZE(InputBuf), input_text_flags, &TextEditCallbackStub, (void*)this)) {
-                char* s = InputBuf;
+            if (ImGui::InputText("Input", input_buf, IM_ARRAYSIZE(input_buf), input_text_flags, &TextEditCallbackStub, (void*)this)) {
+                char* s = input_buf;
                 Strtrim(s);
                 if (s[0])
                     ExecCommand(string(s));

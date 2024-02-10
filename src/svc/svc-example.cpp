@@ -17,10 +17,10 @@ int service_example(const vector<string>& args) {
         int counter = 1;
 
         // Example of OTHER_COLOR usage would be logging the value of a variable
-        util_log_stack.push("#O [example.svc]: init value of counter = " + std::to_string(counter));
+        log_util.push("#O [example.svc]: init value of counter = " + std::to_string(counter));
 
         while (!requestRoutineStatus("example.svc")) {
-            util_log_stack.push("Information Relay " + std::to_string(counter));
+            log_util.push("Information Relay " + std::to_string(counter));
             counter++;
 
             // Wait 0.5s before next message

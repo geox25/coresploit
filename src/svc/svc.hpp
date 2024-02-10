@@ -94,9 +94,11 @@ public:
 // TODO: Replace string with more robust ID class?
 extern unordered_map<string, UnifiedService> services;
 
-extern ThreadSafeQueue<string> util_log_stack;
+// TODO: Improve log stack system
+extern ThreadSafeQueue<string> log_system;      // Used for logging by system services
+extern ThreadSafeQueue<string> log_util;        // Used for utility logging by mainly non-system services
 
-extern bool requestAddRoutine(const string& id, const function<int(const vector<string>&)>& service);
+extern bool addNormalRoutine(const string& id, const function<int(const vector<string>&)>& service);
 
 extern bool requestRoutineStatus(const string& id);
 

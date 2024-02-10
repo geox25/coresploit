@@ -51,7 +51,7 @@ static std::string exec(const char* cmd) {
 #if defined(unix)
 // PRG-USTAT CODE TO BE RAN ON UNIX SYSTEMS
 int service_ustat_unix() {
-    util_log_stack.push("#O [prg-ustat] <prg-ustat.cpp>: Running unix ustat code");
+    log_util.push("#O [prg-ustat] <prg-ustat.cpp>: Running unix ustat code");
 
     string pid = to_string(getpid());
 
@@ -69,9 +69,9 @@ int service_ustat_unix() {
     string ram_usage = to_string(ram_usage_int) + " MB";
 
     if (!cpu_usage.empty() && !ram_usage.empty()) {
-        util_log_stack.push("#S [ustat.svc]: CPU: " + cpu_usage + "% RAM: " + ram_usage);
+        log_util.push("#S [ustat.svc]: CPU: " + cpu_usage + "% RAM: " + ram_usage);
     } else {
-        util_log_stack.push("#E [ustat.svc]: Error trying to retrieve CPU and RAM usage info!");
+        log_util.push("#E [ustat.svc]: Error trying to retrieve CPU and RAM usage info!");
         return -1;
     }
 
@@ -160,7 +160,7 @@ int win64_getCpuUsage(int pid)
 
 // PRG-USTAT CODE TO BE RAN ON WINDOWS 64-BIT SYSTEMS
 int service_ustat_win64() {
-    util_log_stack.push("#O [prg-ustat] <prg-ustat.cpp>: Running win64 ustat code");
+    log_util.push("#O [prg-ustat] <prg-ustat.cpp>: Running win64 ustat code");
 
     // Windows-specific code for memory usage
     PROCESS_MEMORY_COUNTERS_EX pmc;
@@ -170,7 +170,7 @@ int service_ustat_win64() {
     // TODO: Windows-specific code for CPU usage
     int cpuUsage = win64_getCpuUsage(GetCurrentProcessId());
 
-    util_log_stack.push("#S [prg-ustat]: CPU Usage: " + to_string(cpuUsage) + '%' + " Memory Usage: " + to_string(memoryUsage / 1024 / 1024) + " MB");
+    log_util.push("#S [prg-ustat]: CPU Usage: " + to_string(cpuUsage) + '%' + " Memory Usage: " + to_string(memoryUsage / 1024 / 1024) + " MB");
 
     return 0;
 }
@@ -182,13 +182,13 @@ int service_ustat(const vector<string>& args) {
 
     if (!requestRoutineStatus("ustat")) {
         if (OS == OS_UNIX) {
-            util_log_stack.push("#O [prg-ustat] <prg-ustat.cpp>: Operating System Detected As: Unix");
+            log_util.push("#O [prg-ustat] <prg-ustat.cpp>: Operating System Detected As: Unix");
             service_ustat_unix();
         } else if (OS == OS_WIN64) {
-            util_log_stack.push("#O [prg-ustat] <prg-ustat.cpp>: Operating System Detected As: Win64");
+            log_util.push("#O [prg-ustat] <prg-ustat.cpp>: Operating System Detected As: Win64");
             service_ustat_win64();
         } else {
-            util_log_stack.push("#E [prg-ustat] <prg-ustat.cpp>: Unsupported Operating System Detected! Program is Operating System dependent.");
+            log_util.push("#E [prg-ustat] <prg-ustat.cpp>: Unsupported Operating System Detected! Program is Operating System dependent.");
         }
     }
 
