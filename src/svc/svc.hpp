@@ -112,4 +112,6 @@ extern bool requestStopRoutine(const string& id);
 
 extern void makeRoutines();
 
+extern void monitor_system_futures();
+
 #endif //PXL_SVC_HPP

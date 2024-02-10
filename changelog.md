@@ -7,7 +7,8 @@
 
 ---
 - Renamed log stack variables from `util_log_stack` to more concise `log_util`
-
 - Changed comments that were too long
+- Minor refactorization of guards in `run` command code
 
 ---
+- Fixed innacurate log message in `monitor_futures`

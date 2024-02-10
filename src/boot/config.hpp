@@ -13,12 +13,14 @@
 
 using std::string;
 
-inline const string        PXL_VERSION              = "v24.2.3";
+inline const string             PXL_VERSION              = "v24.2.3";
 
-inline const string        PXL_TITLE                = ("PXL " + PXL_VERSION);
+inline const string             PXL_TITLE                = ("PXL " + PXL_VERSION);
 
-inline const char*         PXL_TITLE_CSTR()         { return PXL_TITLE.c_str(); }
+inline const char*              PXL_TITLE_CSTR()         { return PXL_TITLE.c_str(); }
 
-inline ImVec2              DEFAULT_WIN_CONSOLE_SIZE = {1280, 720};   // Default X,Y window size of the console
+inline const ImVec2             DEFAULT_WIN_CONSOLE_SIZE = {1280, 720};   // Default X,Y window size of the console
+
+inline const vector<string>     SECURITY_ARGS            = {};
 
 #endif //PXL_CONFIG_HPP

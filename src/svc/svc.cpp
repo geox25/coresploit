@@ -9,6 +9,9 @@
 #include <future>
 #include "svc.hpp"
 
+// Include config
+#include "../boot/config.hpp"
+
 // Include system services
 #include "system/security/svc-security.hpp"
 
@@ -24,11 +27,14 @@ using std::function;
 using std::vector;
 using std::future;
 
+// PUBLIC VARIABLES
 ThreadSafeQueue<string>                 log_system = ThreadSafeQueue<string>();
 ThreadSafeQueue<string>                 log_util = ThreadSafeQueue<string>();
-
-unordered_map<string, UnifiedService>   system_services;
 unordered_map<string, UnifiedService>   services;
+
+// PRIVATE VARIABLES
+unordered_map<string, future<int>>      system_services_futures;
+unordered_map<string, UnifiedService>   system_services;
 
 bool addNormalRoutine(const string& id, const function<int(const vector<string>&)>& service) {
     // Do not add if already contains id
@@ -41,7 +47,7 @@ bool addNormalRoutine(const string& id, const function<int(const vector<string>&
     return true;
 }
 
-bool addSystemRoutine(const string& id, const function<int(const vector<string>&)>& service) {
+bool addSystemRoutine(const string& id, const function<int(const vector<string>&)>& service, const bool& auto_start) {
     // Do not add if already contains id
     if (system_services.contains(id)) {
         return false;
@@ -49,6 +55,13 @@ bool addSystemRoutine(const string& id, const function<int(const vector<string>&
 
     // Otherwise add
     system_services.insert(std::make_pair(id, service));
+
+    // If routine should start automatically
+    if (auto_start) {
+        system_services.at(id).run();
+        system_services_futures.emplace(id, std::async(std::launch::async, [id] { return system_services.at(id).getService()(SECURITY_ARGS); }));
+    }
+
     return true;
 }
 
@@ -85,8 +98,25 @@ bool requestStopRoutine(const string& id) {
     }
 }
 
+// This function will be run in monitor_futures() thread in boot.cpp
+// It does not have its own thread in order to save resources
+void monitor_system_futures() {
+    log_system.push("#O [monitor_futures()] <svc.cpp>: System Futures are now being monitored every 0.25 seconds in a separate thread");
+    for (auto it = system_services_futures.begin(); it != system_services_futures.end(); ) {
+        if (it->second.wait_for(std::chrono::seconds(0)) == std::future_status::ready) {
+            string service_id = it->first;
+            requestStopRoutine(service_id);
+            it = system_services_futures.erase(it);
+            log_system.push("#O [monitor_futures()] <svc.cpp>: [" + service_id + "] has been erased from futures");
+            log_system.push("#O [monitor_futures()] <svc.cpp>: Length of futures: " + std::to_string(system_services_futures.size()));
+        } else {
+            ++it;
+        }
+    }
+}
+
 void makeRoutines() {
-    addSystemRoutine("security.svc", service_security);
+    addSystemRoutine("security.svc", service_security, true);
 
     addNormalRoutine("example.svc", service_example);
     addNormalRoutine("ustat", service_ustat);

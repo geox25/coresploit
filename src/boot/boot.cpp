@@ -94,7 +94,7 @@ namespace boot::window {
             // Populate string to function of command_map
             PopulateCommandMap();
             makeRoutines();
-            std::thread monitorThread(&boot::window::Console::monitorFutures, this);
+            std::thread monitorThread(&boot::window::Console::monitor_futures, this);
             monitorThread.detach(); // detach so it doesn't result in terminate called without an active exception
         }
         ~Console() {
@@ -111,17 +111,17 @@ namespace boot::window {
                 }
 
                 if (requestValidRoutineID(cmd.at(1))) {
+                    // If SERVICE is already running
+                    if (!requestRoutineStatus(cmd.at(1))) {
+                        AddLog("#E [0] <boot.cpp>: That service is already running! (Try running it again if you believe it has stopped)");
+                        return;
+                    }
+
                     // If PROGRAM is already running
                     if ((cmd.at(1).find(".svc") == std::string::npos) && !requestRoutineStatus(cmd.at(1))) {
                         requestStopRoutine(cmd.at(1));
                         routine::futures.erase(cmd.at(1));
                         AddLog("#O [0] <boot.cpp>: Automatically stopped (program behavior): " + cmd.at(1));
-                    }
-
-                    // If SERVICE is already running
-                    if (!requestRoutineStatus(cmd.at(1))) {
-                        AddLog("#E [0] <boot.cpp>: That service is already running! (Try running it again if you believe it has stopped)");
-                        return;
                     }
 
                     AddLog("#O [0] <boot.cpp>: Starting: " + cmd.at(1));
@@ -209,6 +209,13 @@ namespace boot::window {
             const float footer_height_to_reserve = ImGui::GetStyle().ItemSpacing.y + ImGui::GetFrameHeightWithSpacing();
             if (ImGui::BeginChild("ScrollingRegion", ImVec2(0, -footer_height_to_reserve), ImGuiChildFlags_None, ImGuiWindowFlags_HorizontalScrollbar)) {
 
+                // Merge log messages from log_system to main Items vector (priority over util)
+                while (log_system.size() != 0) {
+                    if (!log_system.front().starts_with("#O") || verbose)
+                        routine::Items.push_back(log_system.front());
+                    log_system.pop();
+                }
+
                 // Merge log messages from log_util to main Items vector
                 while (log_util.size() != 0) {
                     if (!log_util.front().starts_with("#O") || verbose)
@@ -288,16 +295,19 @@ namespace boot::window {
         }
 
         // This function will be run in a separate thread
-        [[noreturn]] void monitorFutures() {
-            AddLog("#O [monitorFutures()] <boot.cpp>: Futures are now being monitored every 5 seconds in a separate thread");
+        [[noreturn]] void monitor_futures() {
+            AddLog("#O [monitor_futures()] <boot.cpp>: Futures are now being monitored every 0.25 seconds in a separate thread");
             while (true) {
+                // Monitor system futures of svc.cpp
+                monitor_system_futures();
+
                 for (auto it = routine::futures.begin(); it != routine::futures.end(); ) {
                     if (it->second.wait_for(std::chrono::seconds(0)) == std::future_status::ready) {
                         string service_id = it->first;
                         requestStopRoutine(service_id);
                         it = routine::futures.erase(it);
-                        AddLog("#O [monitorFutures()] <boot.cpp>: [" + service_id + "] has been erased from futures");
-                        AddLog("#O [monitorFutures()] <boot.cpp>: Length of futures: " + std::to_string(routine::futures.size()));
+                        AddLog("#O [monitor_futures()] <boot.cpp>: [" + service_id + "] has been erased from futures");
+                        AddLog("#O [monitor_futures()] <boot.cpp>: Length of futures: " + std::to_string(routine::futures.size()));
                     } else {
                         ++it;
                     }
