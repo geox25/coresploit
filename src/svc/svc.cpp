@@ -62,7 +62,7 @@ bool addSystemRoutine(const string& id, const function<int(const vector<string>&
     // If routine should start automatically
     if (auto_start) {
         system_services.at(id).run();
-        system_services_futures.emplace(id, std::async(std::launch::async, [id] { return system_services.at(id).getService()(SECURITY_ARGS); }));
+        system_services_futures.emplace(id, std::async(std::launch::async, [id] { return system_services.at(id).getService()(SECURITY_FLAGS); }));
     }
 
     return true;
