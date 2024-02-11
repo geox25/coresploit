@@ -1,3 +1,8 @@
+# v1.2 Stable
+
+---
+# Changes
+
 ### Added
 - Added `security.svc` from `service_security` in `svc-security.cpp`
 - Added difference between normal routines and system routines (system routines like `security.svc` cannot be stopped for obvious security reasons)
@@ -6,6 +11,7 @@
 - Added `log_system` log stack for system services
 - Added `monitor_system_futures` called by `monitor_futures` (does not have its own thread to save resources)
 - Added text wrap of logs by adding a `\n` every 150 characters
+- Added some compiler flags including `set(CMAKE_CXX_FLAGS_RELEASE "-O3")` for optimization
 ### Changed
 
 - Moved `futures` from `boot.cpp` to `svc.cpp`
