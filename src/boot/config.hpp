@@ -20,4 +20,8 @@ inline const char*                  PXL_TITLE_CSTR()         { return PXL_TITLE.
 inline constexpr ImVec2             DEFAULT_WIN_CONSOLE_SIZE = {1280, 720};   // Default X,Y window size of the console
 inline constexpr vector<string>     SECURITY_FLAGS           = {};
 
+inline const string                 DEFAULT_THEME            = "THEME_MODERN";
+
+string DEFAULT_THEME_FRONTEND();
+
 #endif //PXL_CONFIG_HPP

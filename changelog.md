@@ -1,7 +1,12 @@
 # v1.2 Stable
 
 ---
-# Changes
+# Features
+
+- Added theme selector in options
+- Added `modern`, `retro`, and `gray` themes
+
+# Backend Changes
 
 ### Added
 - Added `security.svc` from `service_security` in `svc-security.cpp`
@@ -12,12 +17,14 @@
 - Added `monitor_system_futures` called by `monitor_futures` (does not have its own thread to save resources)
 - Added text wrap of logs by adding a `\n` every 150 characters
 - Added some compiler flags including `set(CMAKE_CXX_FLAGS_RELEASE "-O3")` for optimization
+- Added `DEFAULT_THEME` to `config.hpp`
 ### Changed
 
 - Moved `futures` from `boot.cpp` to `svc.cpp`
 - Renamed log stack variables from `util_log_stack` to more concise `log_util`
 - Changed comments that were too long
 - Minor refactoring of guards in `run` command code
+- Removed useless `INJECT` button which is no longer necessary
 ### Fixed
 
 - Fixed race condition causing segfault when a routine is erased from futures and monitor_futures tries to erase it and update iterator (one iteration is skipped)

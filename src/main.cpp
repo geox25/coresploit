@@ -77,7 +77,7 @@ int main(int, char**) {
     ImFont* font = io.Fonts->AddFontFromFileTTF("../rsc/fonts/lucida-console.ttf", 14.0f, NULL, io.Fonts->GetGlyphRangesDefault());
 
     // Setup Style
-    boot::trivial::MakeStyle(ImGui::GetStyle());
+    boot::trivial::use_theme(DEFAULT_THEME, ImGui::GetStyle());
 
     // Setup Platform/Renderer backends
     ImGui_ImplGlfw_InitForOpenGL(window, true);

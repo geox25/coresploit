@@ -42,6 +42,7 @@ add_subdirectory(vendor/glfw)
 add_executable(PXL src/main.cpp
         src/boot/trivial-boot.cpp
         src/boot/boot.cpp
+        src/boot/config.cpp
         src/svc/svc-example.cpp
         src/svc/svc.cpp
         src/svc/prg-ustat.cpp

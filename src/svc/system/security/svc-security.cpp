@@ -48,7 +48,7 @@ string merge_security_flags() {
     }
 
     string result;
-    int count = 1;
+    size_t count = 1;
     for (const string& flag : SECURITY_FLAGS) {
         if (count == SECURITY_FLAGS.size()) {
             result += flag;

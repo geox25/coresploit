@@ -15,6 +15,7 @@
 #include "../svc/svc.hpp"
 #include "config.hpp"
 #include "msg.hpp"
+#include "trivial-boot.hpp"
 
 using std::string, std::vector, std::unordered_map, std::function, std::istream_iterator, std::stringstream, std::transform, std::future, std::function;
 
@@ -72,6 +73,7 @@ using boot::routine::AddLog, boot::routine::ClearLog, boot::routine::CopyItemsTo
 
 namespace boot::window {
 
+
     // Definition for PXL-Console Window
     struct Console {
 
@@ -79,6 +81,9 @@ namespace boot::window {
         bool                auto_scroll;
         bool                scroll_to_bottom;
         char                input_buf[256]{};
+
+        // Theme that is currently selected
+        string selected_theme = DEFAULT_THEME_FRONTEND();
 
         // Maps string cmd to its corresponding function for execution
         unordered_map<string, function<void(const vector<string>&)>> command_map;
@@ -177,6 +182,22 @@ namespace boot::window {
 
             // Options popup menu with example checkbox
             if (ImGui::BeginPopup("Options")) {
+                if (ImGui::BeginCombo("Themes", selected_theme.c_str())) {
+                    if (ImGui::Selectable("Modern")) {
+                        selected_theme = "Modern";
+                        trivial::use_theme("THEME_MODERN", ImGui::GetStyle());
+                    }
+                    if (ImGui::Selectable("Retro")) {
+                        selected_theme = "Retro";
+                        trivial::use_theme("THEME_RETRO", ImGui::GetStyle());
+                    }
+                    if (ImGui::Selectable("Gray")) {
+                        selected_theme = "Gray";
+                        trivial::use_theme("THEME_GRAY", ImGui::GetStyle());
+                    }
+                    ImGui::EndCombo();
+                }
+
                 ImGui::Checkbox("Verbose", &verbose);
                 ImGui::EndPopup();
             }
@@ -269,12 +290,6 @@ namespace boot::window {
                 strcpy(s, "");
                 // Fixes losing focus after enter (maintain focus until clicked off)
                 ImGui::SetKeyboardFocusHere(-1);
-            }
-
-            ImGui::SameLine();
-            if (ImGui::Button("INJECT")) {
-                // TODO: Injection Functionality
-                // TODO: (init.svc, inject.svc, etc)
             }
 
             ImGui::End();

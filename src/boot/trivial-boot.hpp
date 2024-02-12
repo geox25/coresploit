@@ -5,12 +5,14 @@
 #ifndef PXL_TRIVIAL_BOOT_HPP
 #define PXL_TRIVIAL_BOOT_HPP
 
+#include <string>
+
 #include "imgui.h"
 
 namespace boot::trivial {
 
-    // Set Style of ImGuiStyle& Passed in to Visual Studio style by MomoDeve from ImThemes
-    void MakeStyle(ImGuiStyle& style);
+    // Set Style of ImGuiStyle& based on string
+    void use_theme(const std::string& theme, ImGuiStyle& style);
 }
 
 #endif //PXL_TRIVIAL_BOOT_HPP
