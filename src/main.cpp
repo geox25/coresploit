@@ -74,7 +74,7 @@ int main(int, char**) {
     io.GetClipboardTextFn = _IMGUIGetClipboardText;
 
     // Setup lucida-console font size 14
-    ImFont* font = io.Fonts->AddFontFromFileTTF("../rsc/fonts/lucida-console.ttf", 14.0f, NULL, io.Fonts->GetGlyphRangesDefault());
+    io.Fonts->AddFontFromFileTTF("../rsc/fonts/lucida-console.ttf", 14.0f, nullptr, io.Fonts->GetGlyphRangesDefault());
 
     // Setup Style
     boot::trivial::use_theme(DEFAULT_THEME, ImGui::GetStyle());
@@ -82,23 +82,6 @@ int main(int, char**) {
     // Setup Platform/Renderer backends
     ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init(glsl_version);
-
-    // Load Fonts
-    // - If no fonts are loaded, dear imgui will use the default font. You can also load multiple fonts and use ImGui::PushFont()/PopFont() to select them.
-    // - AddFontFromFileTTF() will return the ImFont* so you can store it if you need to select the font among multiple.
-    // - If the file cannot be loaded, the function will return a nullptr. Please handle those errors in your application (e.g. use an assertion, or display an error and quit).
-    // - The fonts will be rasterized at a given size (w/ oversampling) and stored into a texture when calling ImFontAtlas::Build()/GetTexDataAsXXXX(), which ImGui_ImplXXXX_NewFrame below will call.
-    // - Use '#define IMGUI_ENABLE_FREETYPE' in your imconfig file to use Freetype for higher quality font rendering.
-    // - Read 'docs/FONTS.md' for more instructions and details.
-    // - Remember that in C/C++ if you want to include a backslash \ in a string literal you need to write a double backslash \\ !
-    // - Our Emscripten build process allows embedding fonts to be accessible at runtime from the "fonts/" folder. See Makefile.emscripten for details.
-    //io.Fonts->AddFontDefault();
-    //io.Fonts->AddFontFromFileTTF("c:\\Windows\\Fonts\\segoeui.ttf", 18.0f);
-    //io.Fonts->AddFontFromFileTTF("../../misc/fonts/DroidSans.ttf", 16.0f);
-    //io.Fonts->AddFontFromFileTTF("../../misc/fonts/Roboto-Medium.ttf", 16.0f);
-    //io.Fonts->AddFontFromFileTTF("../../misc/fonts/Cousine-Regular.ttf", 15.0f);
-    //ImFont* font = io.Fonts->AddFontFromFileTTF("c:\\Windows\\Fonts\\ArialUni.ttf", 18.0f, nullptr, io.Fonts->GetGlyphRangesJapanese());
-    //IM_ASSERT(font != nullptr);
 
     // Our state
     bool show_console = true;
@@ -124,9 +107,7 @@ int main(int, char**) {
         if (show_demo_window)
             ImGui::ShowDemoWindow(&show_demo_window);
 
-        ImGui::SetNextWindowPos(ImVec2(0, 0));
-        // ImGui::SetNextWindowSize(ImVec2(1280, 720));
-
+        // Show main PXL Console window as long as it was not deliberately disabled
         if (show_console)
             boot::window::ShowConsole(show_console);
 
@@ -147,6 +128,7 @@ int main(int, char**) {
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
 
+    // Destroy window and terminate
     glfwDestroyWindow(window);
     glfwTerminate();
 

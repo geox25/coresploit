@@ -24,7 +24,10 @@
 - Renamed log stack variables from `util_log_stack` to more concise `log_util`
 - Changed comments that were too long
 - Minor refactoring of guards in `run` command code
-- Removed useless `INJECT` button which is no longer necessary
+- Removed unused `INJECT` button which is no longer necessary
+- Removed unused font variable
+- Removed unused window size function call
+- Cleaned up comments
 ### Fixed
 
 - Fixed race condition causing segfault when a routine is erased from futures and monitor_futures tries to erase it and update iterator (one iteration is skipped)
