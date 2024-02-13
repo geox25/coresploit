@@ -22,7 +22,7 @@ source, make sure OpenGL is installed and available on your system.
 ## Roadmap
 
 Immediate Todo:
-- Work on rename (Maybe: Codesploit, Megasploit)
+- Work on rename (Maybe: Coresploit, Megasploit)
 - Add command to show all active routines (num and list them)
 - (security.svc) Verifying that the services are allowed to run
 - (security.svc) Verifying that the services have not been tampered with
