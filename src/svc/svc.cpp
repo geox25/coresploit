@@ -16,6 +16,9 @@
 #include "system/security/svc-security.hpp"
 
 // Include services
+#include <format>
+#include <iomanip>
+
 #include "svc-example.hpp"
 #include "prg-ustat.hpp"
 
@@ -109,7 +112,18 @@ bool requestStopRoutine(const string& id) {
 }
 
 void show_active_services() {
-    log_util.push("#S [0] <svc.cpp>: Active Services: " + std::to_string(futures.size()));
+    string msg = std::format("Active Services: {} Normal, {} System", futures.size(), system_services_futures.size());
+    for (auto& pair : services) {
+        if (!pair.second.getStatus()) {
+            msg += std::format("\n- {} (Normal)", pair.first);
+        }
+    }
+    for (auto& pair : system_services) {
+        if (!pair.second.getStatus()) {
+            msg += std::format("\n- {} (System)", pair.first);
+        }
+    }
+    log_util.push(msg);
 }
 
 // This function will be run in monitor_futures() thread

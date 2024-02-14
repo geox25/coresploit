@@ -5,6 +5,7 @@
 
 - Added theme selector in options
 - Added `modern`, `retro`, and `gray` themes
+- `active` command now shows all running services and whether they are normal or system
 
 # Backend Changes
 
@@ -21,6 +22,7 @@
 ### Changed
 
 - Moved `futures` from `boot.cpp` to `svc.cpp`
+- `std::format` is now being used rather than messy concatenation
 - Renamed log stack variables from `util_log_stack` to more concise `log_util`
 - Changed comments that were too long
 - Minor refactoring of guards in `run` command code
