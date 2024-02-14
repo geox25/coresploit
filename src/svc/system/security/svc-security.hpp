@@ -10,6 +10,8 @@
 
 using std::string, std::vector;
 
+bool check_routine_blacklisted(const string& routine);
+
 int service_security(const vector<string>& args);
 
 #endif //PXL_SVC_SECURITY_HPP

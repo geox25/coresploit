@@ -6,6 +6,16 @@
 #include "../../svc.hpp"
 #include "../../../boot/config.hpp"
 
+static const vector<string> blacklisted_services;
+
+bool check_routine_blacklisted(const string& routine) {
+    if (std::find(SECURITY_FLAGS.begin(), SECURITY_FLAGS.end(), "#BLACKLIST " + routine) != SECURITY_FLAGS.end()) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 // Small log functions to avoid unnecessary repetition of concatenation
 void log(const string& str) {
     log_system.push("#N (security.svc) " + str);
@@ -26,10 +36,10 @@ void log_verbose(const string& str) {
 // Small utility functions for code cleanliness
 string get_operating_system_name()
 {
-#ifdef _WIN32
-    return "Windows 32-bit";
-#elif _WIN64
+#ifdef _WIN64
     return "Windows 64-bit";
+#elif _WIN32
+    return "Windows 32-bit";
 #elif __APPLE__ || __MACH__
     return "Mac OSX";
 #elif __linux__

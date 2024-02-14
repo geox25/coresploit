@@ -10,6 +10,7 @@
 #include "svc.hpp"
 
 // Include config
+#include "system/security/svc-security.hpp"
 #include "../boot/config.hpp"
 
 // Include system services
@@ -43,6 +44,11 @@ unordered_map<string, UnifiedService>   system_services;
 atomic<bool> skipErase = false;
 
 bool addNormalRoutine(const string& id, const function<int(const vector<string>&)>& service) {
+    if (check_routine_blacklisted(id)) {
+        log_system.push(std::format("#Security (svc.cpp) {} is blacklisted and is not allowed to run. If this is an error please modify config.hpp", id));
+        return false;
+    }
+
     // Do not add if already contains id
     if (services.contains(id)) {
         return false;

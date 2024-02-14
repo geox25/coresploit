@@ -5,6 +5,7 @@
 
 - Added theme selector in options
 - Added `modern`, `retro`, and `gray` themes
+- Added option to blacklist services in `config.hpp` via adding `#BLACKLIST <service>` to `SECURITY_FLAGS`
 - `active` command now shows all running services and whether they are normal or system
 
 # Backend Changes
@@ -35,3 +36,4 @@
 - Fixed race condition causing segfault when a routine is erased from futures and monitor_futures tries to erase it and update iterator (one iteration is skipped)
 - Fixed inaccurate window title of program version
 - Fixed inaccurate log message in `monitor_futures`
+- Fixed bug where host system was displayed as win32 instead of win64
