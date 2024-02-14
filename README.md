@@ -28,6 +28,7 @@ Immediate Todo:
 - (security.svc) Verifying that the services have not been tampered with
 - Encryption/Source Guarding -> Executable Binary
 - Setup Library Infrastructure
+- LevelDB for library infrastructure and threat detection
 - Add ``win64-basic_keylog`` to library (Visual studio)
 - Add ``secretsdump`` to library (Python Script)
 
