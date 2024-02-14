@@ -23,7 +23,7 @@ source, make sure OpenGL is installed and available on your system.
 
 Immediate Todo:
 - Work on rename (Maybe: Coresploit, Megasploit)
-- Add command to show all active routines (num and list them)
+- <s>Add command to show all active routines (num and list them)</s>
 - (security.svc) Verifying that the services are allowed to run
 - (security.svc) Verifying that the services have not been tampered with
 - Encryption/Source Guarding -> Executable Binary
