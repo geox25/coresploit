@@ -156,7 +156,7 @@ namespace boot::window {
         }
 
         // Portable helper(s) stolen from imgui_demo.cpp
-        static void Strtrim(char* s)    { char* str_end = s + strlen(s); while (str_end > s && str_end[-1] == ' ') str_end--; *str_end = 0; }
+        static void str_trim(char* s) { char* str_end = s + strlen(s); while (str_end > s && str_end[-1] == ' ') str_end--; *str_end = 0; }
 
         void Draw(const string& title, bool& show_console) {
             ImGui::SetNextWindowSize(DEFAULT_WIN_CONSOLE_SIZE);
@@ -205,6 +205,7 @@ namespace boot::window {
             // Options button that opens the popup menu
             if (ImGui::Button("Options"))
                 ImGui::OpenPopup("Options");
+
             ImGui::SameLine();
             filter.Draw(R"(Filter ("incl,-excl") ("error"))", 180);
             ImGui::Separator();
@@ -284,7 +285,7 @@ namespace boot::window {
             ImGuiInputTextFlags input_text_flags = ImGuiInputTextFlags_EnterReturnsTrue | ImGuiInputTextFlags_EscapeClearsAll | ImGuiInputTextFlags_CallbackCompletion | ImGuiInputTextFlags_CallbackHistory;
             if (ImGui::InputText("Input", input_buf, IM_ARRAYSIZE(input_buf), input_text_flags, &TextEditCallbackStub, (void*)this)) {
                 char* s = input_buf;
-                Strtrim(s);
+                str_trim(s);
                 if (s[0])
                     ExecCommand(string(s));
                 strcpy(s, "");
@@ -315,11 +316,6 @@ namespace boot::window {
         }
 
         static int TextEditCallbackStub(ImGuiInputTextCallbackData* data) {
-            auto* console = (Console*)data->UserData;
-            return boot::window::Console::TextEditCallback(data);
-        }
-
-        static int TextEditCallback(ImGuiInputTextCallbackData* data) {
             return 0;
         }
     };

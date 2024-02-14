@@ -30,6 +30,7 @@
 - Removed unused `INJECT` button which is no longer necessary
 - Removed unused font variable
 - Removed unused window size function call
+- Removed unused code in `TextEditCallbackStub`
 - Cleaned up comments
 ### Fixed
 

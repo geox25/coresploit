@@ -18,7 +18,7 @@ inline const string                 PXL_VERSION              = "v1.2 Stable";
 inline const string                 PXL_TITLE                = ("PXL " + PXL_VERSION);
 inline const char*                  PXL_TITLE_CSTR()         { return PXL_TITLE.c_str(); }
 inline constexpr ImVec2             DEFAULT_WIN_CONSOLE_SIZE = {1280, 720};   // Default X,Y window size of the console
-inline vector<string>               SECURITY_FLAGS           = {"#BLACKLIST example.svc"};
+inline vector<string>               SECURITY_FLAGS           = {};
 
 inline const string                 DEFAULT_THEME            = "THEME_MODERN";
 
