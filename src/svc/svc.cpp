@@ -154,7 +154,7 @@ void monitor_system_futures() {
 }
 
 // This function will be run in a separate thread
-void monitor_futures() {
+[[noreturn]] void monitor_futures() {
     log_system.push("#O [monitor_futures()] <svc.cpp>: Futures are now being monitored every 0.25 seconds in a separate thread");
     while (true) {
         // Monitor system futures of svc.cpp

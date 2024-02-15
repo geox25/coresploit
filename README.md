@@ -22,25 +22,23 @@ source, make sure OpenGL is installed and available on your system.
 ## Roadmap
 
 Immediate Todo:
+- <s>More commands like # of active services, cpu/ram usage, etc</s>
 - <s>Work on rename (Maybe: Coresploit, Megasploit)</s>
 - <s>Add command to show all active routines (num and list them)</s>
-- Ability to package multiple routines together into the same thread when individual threads arent required
 - <s>(security.svc) Verifying that the services are allowed to run</s>
-- (security.svc) Verifying that the services have not been tampered with
-- Encryption/Source Guarding -> Executable Binary
 - Setup Library Infrastructure
-- LevelDB for library infrastructure and threat detection
+- LevelDB for library infrastructure and host os service threat detection
 - Add ``win64-basic_keylog`` to library (Visual studio)
 - Add ``secretsdump`` to library (Python Script)
 
-Coresploit Functionality:
+Later Todo:
 - Included Password Cracking Utils
 - Injection Functionality (init.svc, inject.svc, etc)
-- Service Security Checks & management service (security.svc)
-- <s>More commands like # of active services, cpu/ram usage, etc</s>
+- <s>Service Security Checks & management service (security.svc)</s>
 - Window docking functionality with other windows (file browser, performance overview, system info)
+- Encryption/Source Guarding -> Executable Binary
 
-Main/Addon Functionality:
+Eventually Todo:
 - Encrypted notepad/files with cloud storage support
 - Cross-platform keyloggers
 - Cross-platform proccess monitoring
