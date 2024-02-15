@@ -38,3 +38,4 @@
 - Fixed inaccurate window title of program version
 - Fixed inaccurate log message in `monitor_futures`
 - Fixed bug where host system was displayed as win32 instead of win64
+- Fixed `monitor_futures` not marked as `[[noreturn]]`
