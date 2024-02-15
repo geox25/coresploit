@@ -25,7 +25,7 @@ Immediate Todo:
 - <s>Work on rename (Maybe: Coresploit, Megasploit)</s>
 - <s>Add command to show all active routines (num and list them)</s>
 - Ability to package multiple routines together into the same thread when individual threads arent required
-- (security.svc) Verifying that the services are allowed to run
+- <s>(security.svc) Verifying that the services are allowed to run</s>
 - (security.svc) Verifying that the services have not been tampered with
 - Encryption/Source Guarding -> Executable Binary
 - Setup Library Infrastructure
