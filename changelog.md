@@ -1,5 +1,7 @@
 # v1.2 Stable
 
+This is the first stable release of Coresploit (previously PXL). The next update will focus on code cleanliness, bug fixes, and `.ini` config file support. :tada:
+
 ---
 # Features
 
@@ -38,4 +40,5 @@
 - Fixed inaccurate window title of program version
 - Fixed inaccurate log message in `monitor_futures`
 - Fixed bug where host system was displayed as win32 instead of win64
-- Fixed `monitor_futures` not marked as `[[noreturn]]`
+
+**Full Changelog**: https://github.com/geox25/PXL-private-codebase/blob/master/changelog.md
