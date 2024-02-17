@@ -22,10 +22,6 @@ source, make sure OpenGL is installed and available on your system.
 ## Roadmap
 
 Immediate Todo:
-- <s>More commands like # of active services, cpu/ram usage, etc</s>
-- <s>Work on rename (Maybe: Coresploit, Megasploit)</s>
-- <s>Add command to show all active routines (num and list them)</s>
-- <s>(security.svc) Verifying that the services are allowed to run</s>
 - Setup Library Infrastructure
 - LevelDB for library infrastructure and host os service threat detection
 - Add ``win64-basic_keylog`` to library (Visual studio)
@@ -34,7 +30,6 @@ Immediate Todo:
 Later Todo:
 - Included Password Cracking Utils
 - Injection Functionality (init.svc, inject.svc, etc)
-- <s>Service Security Checks & management service (security.svc)</s>
 - Window docking functionality with other windows (file browser, performance overview, system info)
 - Encryption/Source Guarding -> Executable Binary
 
