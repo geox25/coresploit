@@ -1,6 +1,6 @@
 # Coresploit Private Repository
 
-[![Stable - N/A](https://img.shields.io/badge/Stable-N%2FA-2ea44f?style=for-the-badge)](https://)
+[![Stable - v1.2](https://img.shields.io/badge/Stable-N%2FA-2ea44f?style=for-the-badge)](https://)
 [![Nightly - v1.1](https://img.shields.io/badge/Nightly-v1.1-852ea4?style=for-the-badge)](https://)
 [![License - Private/Proprietary](https://img.shields.io/badge/License-Private%2FProprietary-blue?style=for-the-badge)](https://)
 [![view - Documentation](https://img.shields.io/badge/view-Documentation-blue?style=for-the-badge)](/docs/ "Go to project documentation")
@@ -20,8 +20,12 @@ Coresploit can be easily compiled from source (especially on CLion) however prec
 source, make sure OpenGL is installed and available on your system. 
 
 ## Roadmap
+**[Go to Project Philosophy](insert link here lol)**
 
 Immediate Todo:
+- Integrated TOML support with minimal SLOC that will stand the test of time even if author abandons library
+- Work on project philosophy & style guidelines
+- Self-hosted gitea private server
 - Setup Library Infrastructure
 - LevelDB for library infrastructure and host os service threat detection
 - Add ``win64-basic_keylog`` to library (Visual studio)

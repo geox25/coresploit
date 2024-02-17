@@ -3,6 +3,7 @@
 //
 
 #include "config.hpp"
+#include "toml.hpp"
 
 string DEFAULT_THEME_FRONTEND() {
     if (DEFAULT_THEME == "THEME_MODERN") {

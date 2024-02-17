@@ -6,7 +6,6 @@
 #include "../../svc.hpp"
 #include "../../../boot/config.hpp"
 
-static const vector<string> blacklisted_services;
 
 bool check_routine_blacklisted(const string& routine) {
     if (std::find(SECURITY_FLAGS.begin(), SECURITY_FLAGS.end(), "#BLACKLIST " + routine) != SECURITY_FLAGS.end()) {
