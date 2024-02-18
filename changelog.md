@@ -30,6 +30,7 @@ This is the second stable release of Coresploit which focuses on improving code 
 - Fixed unused parameter `cmd` for `ACTIVE` command by adding `[[maybe_unused]]`
 - Fixed unused parameter `data` for `TextEditCallbackStub` by adding `[[maybe_unused]]`
 - Fixed console window not being centered in the OS window by setting next window position to `ImVec2(0, 0)`
+- Fixed some minor instances where `PXL` was used instead of `Coresploit` or `CS`
 
 ---
 
