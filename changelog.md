@@ -15,6 +15,7 @@ This is the second stable release of Coresploit which focuses on improving code 
 ### Changed
 
 - Heavily cleaned up `CMakeLists.txt` with better organization and sections
+- `config.toml` is now used for configuration instead of directly modifying `config.hpp`
 - Removed useless `blacklisted_services` variable in `svc-security.cpp`
 
 ### Fixed
