@@ -69,19 +69,19 @@ string merge_security_flags() {
     return result;
 }
 
-static const string INFO_PXL_VERSION      = "PXL VERSION: " + PXL_VERSION;
-static const string INFO_OPERATING_SYSTEM = "HOST SYSTEM: " + get_operating_system_name();
-static const string INFO_SECURITY_FLAGS   = "SECURITY_FLAGS: " + merge_security_flags();
-
 void gather_system_info() {
     // Do something more in depth...
     log("Gathering more detailed information...");
 }
 
 void security_main() {
+    static const string INFO_CS_VERSION      = "CORESPLOIT VERSION: " + CS_VERSION;
+    static const string INFO_OPERATING_SYSTEM = "HOST SYSTEM: " + get_operating_system_name();
+    static const string INFO_SECURITY_FLAGS   = "SECURITY_FLAGS: " + merge_security_flags();
+
     // Main sequence of security.svc, will log OS and other system info
     // next will perform security checks
-    log(INFO_PXL_VERSION);
+    log(INFO_CS_VERSION);
     log(INFO_OPERATING_SYSTEM);
     log(INFO_SECURITY_FLAGS);
 

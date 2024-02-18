@@ -4,7 +4,7 @@ This is the second stable release of Coresploit which focuses on improving code 
 ---
 # Features
 
-
+- Coresploit is now configured through `config.toml` which is much more readable than a header file
 
 # Backend Changes
 
@@ -20,6 +20,7 @@ This is the second stable release of Coresploit which focuses on improving code 
 
 ### Fixed
 
+- Fixed dangling references to tables of `config.toml` by copying instead of using a reference
 - Fixed OS string comparison resulting in undefined behavior (replaced `==` with `strcmp`)
 - Fixed unused parameter `args` for `service_ustat` by adding `[[maybe_unused]]`
 - Fixed unused parameter `args` for `service_example` by adding `[[maybe_unused]]`

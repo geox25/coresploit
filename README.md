@@ -23,7 +23,7 @@ source, make sure OpenGL is installed and available on your system.
 **[Go to Project Philosophy](insert link here lol)**
 
 Immediate Todo:
-- Integrated TOML support with minimal SLOC that will stand the test of time even if author abandons library
+- Shell file to run `tail -f` of a `master.log` file that uses `spdlog` or `loguru`
 - Work on project philosophy & style guidelines
 - Self-hosted gitea private server
 - Setup Library Infrastructure

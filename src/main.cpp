@@ -57,8 +57,11 @@ int main(int, char**) {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
 #endif
 
+    // Initialize config variables from TOML files
+    init_config();
+
     // Create window with graphics context
-    window = glfwCreateWindow(1280, 720, PXL_TITLE_CSTR(), nullptr, nullptr);
+    window = glfwCreateWindow(1280, 720, CS_TITLE_CSTR, nullptr, nullptr);
     if (window == nullptr)
         return 1;
     glfwMakeContextCurrent(window);
@@ -72,9 +75,6 @@ int main(int, char**) {
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
     io.SetClipboardTextFn = _IMGUISetClipboardText;
     io.GetClipboardTextFn = _IMGUIGetClipboardText;
-
-    // Initialize config variables from TOML files
-    init_config();
 
     // Setup lucida-console font size 14
     io.Fonts->AddFontFromFileTTF("../rsc/fonts/lucida-console.ttf", 14.0f, nullptr, io.Fonts->GetGlyphRangesDefault());

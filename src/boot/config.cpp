@@ -6,6 +6,8 @@
 #include "config.hpp"
 #include "toml.hpp"
 
+using std::string;
+
 const string FULL_CONFIG_PATH = "config.toml";
 
 // Return the front-end formatting for the default theme
@@ -49,10 +51,34 @@ void init_config() {
         std::cout << error.what() << std::endl;
     }
 
-    // access with STL-like manner
+    // If Metadata section is not present in config, we need
+    // to initialize all default configuration values
     if(!config_data.contains("Metadata")) {
+        // Initialize default metadata values
         config_data["Metadata"]["title"] = "Coresploit Configuration";
+        config_data["Metadata"]["cs_version"] = CFG_DEFAULT_CS_VERSION;
+        config_data["Metadata"]["cs_title"] = CFG_DEFAULT_CS_TITLE;
+
+        // Initialize default actual configuration values
+        config_data["Config"]["default_win_console_size"] = {CFG_DEFAULT_DEFAULT_WIN_CONSOLE_SIZE[0], CFG_DEFAULT_DEFAULT_WIN_CONSOLE_SIZE[1]};
+        config_data["Config"]["security_flags"] = CFG_DEFAULT_SECURITY_FLAGS;
+        config_data["Config"]["default_theme"] = CFG_DEFAULT_DEFAULT_THEME;
     }
+
+    // This will set the values of the config variables used in the program to the values that are used in the config
+    // If they are not set by the user in the config, the default values will be used from the conditional above.
+    // Otherwise, if they are changed by the user, it will use the custom values in config.toml
+    // Get the tables
+    const auto metadata = toml::find(config_data, "Metadata");
+    const auto config = toml::find(config_data, "Config");
+    const auto default_win_console_size_arr = toml::find(config, "default_win_console_size");
+
+    CS_VERSION = toml::find<string>(metadata, "cs_version");
+    CS_TITLE = toml::find<string>(metadata, "cs_title");
+    CS_TITLE_CSTR = CS_TITLE.c_str();
+    DEFAULT_WIN_CONSOLE_SIZE = ImVec2(toml::find<float>(default_win_console_size_arr, 0), toml::find<float>(default_win_console_size_arr, 1));
+    SECURITY_FLAGS = toml::find<vector<string>>(config, "security_flags");
+    DEFAULT_THEME = toml::find<string>(config, "default_theme");
 
     // Write TOML data to file
     std::ofstream file(FULL_CONFIG_PATH);

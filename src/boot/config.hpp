@@ -14,13 +14,19 @@
 
 using std::string, std::vector;
 
-inline const string                 PXL_VERSION              = "v1.2 Stable";
-inline const string                 PXL_TITLE                = ("PXL " + PXL_VERSION);
-inline const char*                  PXL_TITLE_CSTR()         { return PXL_TITLE.c_str(); }
-inline constexpr ImVec2             DEFAULT_WIN_CONSOLE_SIZE = {1280, 720};   // Default X,Y window size of the console
-inline vector<string>               SECURITY_FLAGS           = {};
+inline const string                 CFG_DEFAULT_CS_VERSION              = "v1.3 Stable";
+inline const string                 CFG_DEFAULT_CS_TITLE                = ("Coresploit " + CFG_DEFAULT_CS_VERSION);
+inline const char*                  CFG_DEFAULT_CS_TITLE_CSTR()         { return CFG_DEFAULT_CS_TITLE.c_str(); }
+inline constexpr ImVec2             CFG_DEFAULT_DEFAULT_WIN_CONSOLE_SIZE = {1280, 720};   // Default X,Y window size of the console
+inline vector<string>               CFG_DEFAULT_SECURITY_FLAGS           = {};
+inline const string                 CFG_DEFAULT_DEFAULT_THEME            = "THEME_MODERN";
 
-inline const string                 DEFAULT_THEME            = "THEME_MODERN";
+inline string CS_VERSION;
+inline string CS_TITLE;
+inline const char* CS_TITLE_CSTR;
+inline ImVec2 DEFAULT_WIN_CONSOLE_SIZE;
+inline vector<string> SECURITY_FLAGS;
+inline string DEFAULT_THEME;
 
 // Return the front-end formatting for the default theme
 string DEFAULT_THEME_FRONTEND();
