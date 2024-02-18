@@ -11,12 +11,15 @@ This is the second stable release of Coresploit which focuses on improving code 
 ### Added
 
 - Coresploit now uses the `toml11` library for `.TOML` file support
+
 ### Changed
 
 - Heavily cleaned up `CMakeLists.txt` with better organization and sections
 - Removed useless `blacklisted_services` variable in `svc-security.cpp`
 
 ### Fixed
+
+- Console window not being centered in the OS window
 
 ---
 

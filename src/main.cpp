@@ -73,6 +73,9 @@ int main(int, char**) {
     io.SetClipboardTextFn = _IMGUISetClipboardText;
     io.GetClipboardTextFn = _IMGUIGetClipboardText;
 
+    // Initialize config variables from TOML files
+    init_config();
+
     // Setup lucida-console font size 14
     io.Fonts->AddFontFromFileTTF("../rsc/fonts/lucida-console.ttf", 14.0f, nullptr, io.Fonts->GetGlyphRangesDefault());
 

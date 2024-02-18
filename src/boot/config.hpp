@@ -22,6 +22,10 @@ inline vector<string>               SECURITY_FLAGS           = {};
 
 inline const string                 DEFAULT_THEME            = "THEME_MODERN";
 
+// Return the front-end formatting for the default theme
 string DEFAULT_THEME_FRONTEND();
+
+// Initializes the configuration variables as seen above
+void init_config();
 
 #endif //PXL_CONFIG_HPP

@@ -160,6 +160,7 @@ namespace boot::window {
 
         void Draw(const string& title, bool& show_console) {
             ImGui::SetNextWindowSize(DEFAULT_WIN_CONSOLE_SIZE);
+            ImGui::SetNextWindowPos(ImVec2(0, 0));
 
             if (!ImGui::Begin(title.c_str(), &show_console)) {
                 ImGui::End();
