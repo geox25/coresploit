@@ -20,7 +20,7 @@ Coresploit can be easily compiled from source (especially on CLion) however prec
 source, make sure OpenGL is installed and available on your system. 
 
 ## Roadmap
-**[Go to Project Philosophy](insert link here lol)**
+**[Go to Project Philosophy](philosophy.txt)**
 
 Immediate Todo:
 - (CLion) Right Click On File -> Analyze feature to improve code
