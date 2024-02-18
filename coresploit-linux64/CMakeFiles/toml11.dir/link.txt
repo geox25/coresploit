@@ -1,0 +1,2 @@
+/usr/bin/ar qc libtoml11.a 
+/usr/bin/ranlib libtoml11.a
