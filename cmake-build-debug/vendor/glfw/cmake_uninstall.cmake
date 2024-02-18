@@ -1,9 +1,9 @@
 
-if (NOT EXISTS "/home/geo/CLionProjects/coresploit/cmake-build-debug/vendor/glfw/install_manifest.txt")
-  message(FATAL_ERROR "Cannot find install manifest: \"/home/geo/CLionProjects/coresploit/cmake-build-debug/vendor/glfw/install_manifest.txt\"")
+if (NOT EXISTS "/home/geo/CLionProjects/coresploit-github/cmake-build-debug/vendor/glfw/install_manifest.txt")
+  message(FATAL_ERROR "Cannot find install manifest: \"/home/geo/CLionProjects/coresploit-github/cmake-build-debug/vendor/glfw/install_manifest.txt\"")
 endif()
 
-file(READ "/home/geo/CLionProjects/coresploit/cmake-build-debug/vendor/glfw/install_manifest.txt" files)
+file(READ "/home/geo/CLionProjects/coresploit-github/cmake-build-debug/vendor/glfw/install_manifest.txt" files)
 string(REGEX REPLACE "\n" ";" files "${files}")
 
 foreach (file ${files})

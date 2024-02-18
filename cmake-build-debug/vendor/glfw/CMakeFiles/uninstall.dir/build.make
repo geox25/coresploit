@@ -53,10 +53,10 @@ RM = /home/geo/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/geo/CLionProjects/coresploit
+CMAKE_SOURCE_DIR = /home/geo/CLionProjects/coresploit-github
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/geo/CLionProjects/coresploit/cmake-build-debug
+CMAKE_BINARY_DIR = /home/geo/CLionProjects/coresploit-github/cmake-build-debug
 
 # Utility rule file for uninstall.
 
@@ -67,7 +67,7 @@ include vendor/glfw/CMakeFiles/uninstall.dir/compiler_depend.make
 include vendor/glfw/CMakeFiles/uninstall.dir/progress.make
 
 vendor/glfw/CMakeFiles/uninstall:
-	cd /home/geo/CLionProjects/coresploit/cmake-build-debug/vendor/glfw && /home/geo/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake -P /home/geo/CLionProjects/coresploit/cmake-build-debug/vendor/glfw/cmake_uninstall.cmake
+	cd /home/geo/CLionProjects/coresploit-github/cmake-build-debug/vendor/glfw && /home/geo/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake -P /home/geo/CLionProjects/coresploit-github/cmake-build-debug/vendor/glfw/cmake_uninstall.cmake
 
 uninstall: vendor/glfw/CMakeFiles/uninstall
 uninstall: vendor/glfw/CMakeFiles/uninstall.dir/build.make
@@ -78,10 +78,10 @@ vendor/glfw/CMakeFiles/uninstall.dir/build: uninstall
 .PHONY : vendor/glfw/CMakeFiles/uninstall.dir/build
 
 vendor/glfw/CMakeFiles/uninstall.dir/clean:
-	cd /home/geo/CLionProjects/coresploit/cmake-build-debug/vendor/glfw && $(CMAKE_COMMAND) -P CMakeFiles/uninstall.dir/cmake_clean.cmake
+	cd /home/geo/CLionProjects/coresploit-github/cmake-build-debug/vendor/glfw && $(CMAKE_COMMAND) -P CMakeFiles/uninstall.dir/cmake_clean.cmake
 .PHONY : vendor/glfw/CMakeFiles/uninstall.dir/clean
 
 vendor/glfw/CMakeFiles/uninstall.dir/depend:
-	cd /home/geo/CLionProjects/coresploit/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/geo/CLionProjects/coresploit /home/geo/CLionProjects/coresploit/vendor/glfw /home/geo/CLionProjects/coresploit/cmake-build-debug /home/geo/CLionProjects/coresploit/cmake-build-debug/vendor/glfw /home/geo/CLionProjects/coresploit/cmake-build-debug/vendor/glfw/CMakeFiles/uninstall.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/geo/CLionProjects/coresploit-github/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/geo/CLionProjects/coresploit-github /home/geo/CLionProjects/coresploit-github/vendor/glfw /home/geo/CLionProjects/coresploit-github/cmake-build-debug /home/geo/CLionProjects/coresploit-github/cmake-build-debug/vendor/glfw /home/geo/CLionProjects/coresploit-github/cmake-build-debug/vendor/glfw/CMakeFiles/uninstall.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : vendor/glfw/CMakeFiles/uninstall.dir/depend
 

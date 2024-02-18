@@ -53,10 +53,10 @@ RM = /home/geo/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/geo/CLionProjects/coresploit
+CMAKE_SOURCE_DIR = /home/geo/CLionProjects/coresploit-github
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/geo/CLionProjects/coresploit/cmake-build-debug
+CMAKE_BINARY_DIR = /home/geo/CLionProjects/coresploit-github/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/toml11.dir/depend.make
@@ -77,7 +77,7 @@ toml11_EXTERNAL_OBJECTS =
 
 libtoml11.a: CMakeFiles/toml11.dir/build.make
 libtoml11.a: CMakeFiles/toml11.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/geo/CLionProjects/coresploit/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Linking CXX static library libtoml11.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/geo/CLionProjects/coresploit-github/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Linking CXX static library libtoml11.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/toml11.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/toml11.dir/link.txt --verbose=$(VERBOSE)
 
@@ -90,6 +90,6 @@ CMakeFiles/toml11.dir/clean:
 .PHONY : CMakeFiles/toml11.dir/clean
 
 CMakeFiles/toml11.dir/depend:
-	cd /home/geo/CLionProjects/coresploit/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/geo/CLionProjects/coresploit /home/geo/CLionProjects/coresploit /home/geo/CLionProjects/coresploit/cmake-build-debug /home/geo/CLionProjects/coresploit/cmake-build-debug /home/geo/CLionProjects/coresploit/cmake-build-debug/CMakeFiles/toml11.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/geo/CLionProjects/coresploit-github/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/geo/CLionProjects/coresploit-github /home/geo/CLionProjects/coresploit-github /home/geo/CLionProjects/coresploit-github/cmake-build-debug /home/geo/CLionProjects/coresploit-github/cmake-build-debug /home/geo/CLionProjects/coresploit-github/cmake-build-debug/CMakeFiles/toml11.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/toml11.dir/depend
 

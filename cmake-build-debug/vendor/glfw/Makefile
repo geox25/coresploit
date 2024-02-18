@@ -57,10 +57,10 @@ RM = /home/geo/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/geo/CLionProjects/coresploit
+CMAKE_SOURCE_DIR = /home/geo/CLionProjects/coresploit-github
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/geo/CLionProjects/coresploit/cmake-build-debug
+CMAKE_BINARY_DIR = /home/geo/CLionProjects/coresploit-github/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/geo/CLionProjects/coresploit/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_progress_start /home/geo/CLionProjects/coresploit/cmake-build-debug/CMakeFiles /home/geo/CLionProjects/coresploit/cmake-build-debug/vendor/glfw//CMakeFiles/progress.marks
-	cd /home/geo/CLionProjects/coresploit/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 vendor/glfw/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/geo/CLionProjects/coresploit/cmake-build-debug/CMakeFiles 0
+	cd /home/geo/CLionProjects/coresploit-github/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_progress_start /home/geo/CLionProjects/coresploit-github/cmake-build-debug/CMakeFiles /home/geo/CLionProjects/coresploit-github/cmake-build-debug/vendor/glfw//CMakeFiles/progress.marks
+	cd /home/geo/CLionProjects/coresploit-github/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 vendor/glfw/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/geo/CLionProjects/coresploit-github/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/geo/CLionProjects/coresploit/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 vendor/glfw/clean
+	cd /home/geo/CLionProjects/coresploit-github/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 vendor/glfw/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/geo/CLionProjects/coresploit/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 vendor/glfw/preinstall
+	cd /home/geo/CLionProjects/coresploit-github/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 vendor/glfw/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/geo/CLionProjects/coresploit/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 vendor/glfw/preinstall
+	cd /home/geo/CLionProjects/coresploit-github/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 vendor/glfw/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/geo/CLionProjects/coresploit/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/geo/CLionProjects/coresploit-github/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 vendor/glfw/CMakeFiles/uninstall.dir/rule:
-	cd /home/geo/CLionProjects/coresploit/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 vendor/glfw/CMakeFiles/uninstall.dir/rule
+	cd /home/geo/CLionProjects/coresploit-github/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 vendor/glfw/CMakeFiles/uninstall.dir/rule
 .PHONY : vendor/glfw/CMakeFiles/uninstall.dir/rule
 
 # Convenience name for target.
@@ -172,7 +172,7 @@ uninstall: vendor/glfw/CMakeFiles/uninstall.dir/rule
 
 # fast build rule for target.
 uninstall/fast:
-	cd /home/geo/CLionProjects/coresploit/cmake-build-debug && $(MAKE) $(MAKESILENT) -f vendor/glfw/CMakeFiles/uninstall.dir/build.make vendor/glfw/CMakeFiles/uninstall.dir/build
+	cd /home/geo/CLionProjects/coresploit-github/cmake-build-debug && $(MAKE) $(MAKESILENT) -f vendor/glfw/CMakeFiles/uninstall.dir/build.make vendor/glfw/CMakeFiles/uninstall.dir/build
 .PHONY : uninstall/fast
 
 # Help Target
@@ -199,6 +199,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/geo/CLionProjects/coresploit/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/geo/CLionProjects/coresploit-github/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

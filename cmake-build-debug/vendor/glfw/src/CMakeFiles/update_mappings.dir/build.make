@@ -53,10 +53,10 @@ RM = /home/geo/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/geo/CLionProjects/coresploit
+CMAKE_SOURCE_DIR = /home/geo/CLionProjects/coresploit-github
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/geo/CLionProjects/coresploit/cmake-build-debug
+CMAKE_BINARY_DIR = /home/geo/CLionProjects/coresploit-github/cmake-build-debug
 
 # Utility rule file for update_mappings.
 
@@ -67,8 +67,8 @@ include vendor/glfw/src/CMakeFiles/update_mappings.dir/compiler_depend.make
 include vendor/glfw/src/CMakeFiles/update_mappings.dir/progress.make
 
 vendor/glfw/src/CMakeFiles/update_mappings:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/geo/CLionProjects/coresploit/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Updating gamepad mappings from upstream repository"
-	cd /home/geo/CLionProjects/coresploit/cmake-build-debug/vendor/glfw/src && /home/geo/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake -P /home/geo/CLionProjects/coresploit/vendor/glfw/CMake/GenerateMappings.cmake mappings.h.in mappings.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/geo/CLionProjects/coresploit-github/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Updating gamepad mappings from upstream repository"
+	cd /home/geo/CLionProjects/coresploit-github/cmake-build-debug/vendor/glfw/src && /home/geo/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake -P /home/geo/CLionProjects/coresploit-github/vendor/glfw/CMake/GenerateMappings.cmake mappings.h.in mappings.h
 
 update_mappings: vendor/glfw/src/CMakeFiles/update_mappings
 update_mappings: vendor/glfw/src/CMakeFiles/update_mappings.dir/build.make
@@ -79,10 +79,10 @@ vendor/glfw/src/CMakeFiles/update_mappings.dir/build: update_mappings
 .PHONY : vendor/glfw/src/CMakeFiles/update_mappings.dir/build
 
 vendor/glfw/src/CMakeFiles/update_mappings.dir/clean:
-	cd /home/geo/CLionProjects/coresploit/cmake-build-debug/vendor/glfw/src && $(CMAKE_COMMAND) -P CMakeFiles/update_mappings.dir/cmake_clean.cmake
+	cd /home/geo/CLionProjects/coresploit-github/cmake-build-debug/vendor/glfw/src && $(CMAKE_COMMAND) -P CMakeFiles/update_mappings.dir/cmake_clean.cmake
 .PHONY : vendor/glfw/src/CMakeFiles/update_mappings.dir/clean
 
 vendor/glfw/src/CMakeFiles/update_mappings.dir/depend:
-	cd /home/geo/CLionProjects/coresploit/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/geo/CLionProjects/coresploit /home/geo/CLionProjects/coresploit/vendor/glfw/src /home/geo/CLionProjects/coresploit/cmake-build-debug /home/geo/CLionProjects/coresploit/cmake-build-debug/vendor/glfw/src /home/geo/CLionProjects/coresploit/cmake-build-debug/vendor/glfw/src/CMakeFiles/update_mappings.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/geo/CLionProjects/coresploit-github/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/geo/CLionProjects/coresploit-github /home/geo/CLionProjects/coresploit-github/vendor/glfw/src /home/geo/CLionProjects/coresploit-github/cmake-build-debug /home/geo/CLionProjects/coresploit-github/cmake-build-debug/vendor/glfw/src /home/geo/CLionProjects/coresploit-github/cmake-build-debug/vendor/glfw/src/CMakeFiles/update_mappings.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : vendor/glfw/src/CMakeFiles/update_mappings.dir/depend
 

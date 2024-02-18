@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/geo/CLionProjects/coresploit/vendor/glfw/include -I/home/geo/CLionProjects/coresploit/vendor/toml11 -I/home/geo/CLionProjects/coresploit/vendor/toml11/toml -I/home/geo/CLionProjects/coresploit/vendor/imgui -I/home/geo/CLionProjects/coresploit/vendor/imgui/backends
+CXX_INCLUDES = -I/home/geo/CLionProjects/coresploit-github/vendor/glfw/include -I/home/geo/CLionProjects/coresploit-github/vendor/toml11 -I/home/geo/CLionProjects/coresploit-github/vendor/toml11/toml -I/home/geo/CLionProjects/coresploit-github/vendor/imgui -I/home/geo/CLionProjects/coresploit-github/vendor/imgui/backends
 
 CXX_FLAGS = -Wall -Wextra -g -std=gnu++20 -fdiagnostics-color=always
 

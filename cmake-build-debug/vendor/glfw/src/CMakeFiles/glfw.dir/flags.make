@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = -D_GLFW_USE_CONFIG_H
 
-C_INCLUDES = -I/home/geo/CLionProjects/coresploit/vendor/glfw/include -I/home/geo/CLionProjects/coresploit/vendor/glfw/src -I/home/geo/CLionProjects/coresploit/cmake-build-debug/vendor/glfw/src
+C_INCLUDES = -I/home/geo/CLionProjects/coresploit-github/vendor/glfw/include -I/home/geo/CLionProjects/coresploit-github/vendor/glfw/src -I/home/geo/CLionProjects/coresploit-github/cmake-build-debug/vendor/glfw/src
 
 C_FLAGS = -g -std=gnu99 -fPIC -fdiagnostics-color=always -Wall
 

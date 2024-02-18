@@ -53,10 +53,10 @@ RM = /home/geo/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/geo/CLionProjects/coresploit
+CMAKE_SOURCE_DIR = /home/geo/CLionProjects/coresploit-github
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/geo/CLionProjects/coresploit/cmake-build-debug
+CMAKE_BINARY_DIR = /home/geo/CLionProjects/coresploit-github/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/CS.dir/depend.make
@@ -70,116 +70,116 @@ include CMakeFiles/CS.dir/progress.make
 include CMakeFiles/CS.dir/flags.make
 
 CMakeFiles/CS.dir/src/main.cpp.o: CMakeFiles/CS.dir/flags.make
-CMakeFiles/CS.dir/src/main.cpp.o: /home/geo/CLionProjects/coresploit/src/main.cpp
+CMakeFiles/CS.dir/src/main.cpp.o: /home/geo/CLionProjects/coresploit-github/src/main.cpp
 CMakeFiles/CS.dir/src/main.cpp.o: CMakeFiles/CS.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/geo/CLionProjects/coresploit/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/CS.dir/src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CS.dir/src/main.cpp.o -MF CMakeFiles/CS.dir/src/main.cpp.o.d -o CMakeFiles/CS.dir/src/main.cpp.o -c /home/geo/CLionProjects/coresploit/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/geo/CLionProjects/coresploit-github/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/CS.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CS.dir/src/main.cpp.o -MF CMakeFiles/CS.dir/src/main.cpp.o.d -o CMakeFiles/CS.dir/src/main.cpp.o -c /home/geo/CLionProjects/coresploit-github/src/main.cpp
 
 CMakeFiles/CS.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CS.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/geo/CLionProjects/coresploit/src/main.cpp > CMakeFiles/CS.dir/src/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/geo/CLionProjects/coresploit-github/src/main.cpp > CMakeFiles/CS.dir/src/main.cpp.i
 
 CMakeFiles/CS.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CS.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/geo/CLionProjects/coresploit/src/main.cpp -o CMakeFiles/CS.dir/src/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/geo/CLionProjects/coresploit-github/src/main.cpp -o CMakeFiles/CS.dir/src/main.cpp.s
 
 CMakeFiles/CS.dir/src/boot/trivial-boot.cpp.o: CMakeFiles/CS.dir/flags.make
-CMakeFiles/CS.dir/src/boot/trivial-boot.cpp.o: /home/geo/CLionProjects/coresploit/src/boot/trivial-boot.cpp
+CMakeFiles/CS.dir/src/boot/trivial-boot.cpp.o: /home/geo/CLionProjects/coresploit-github/src/boot/trivial-boot.cpp
 CMakeFiles/CS.dir/src/boot/trivial-boot.cpp.o: CMakeFiles/CS.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/geo/CLionProjects/coresploit/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/CS.dir/src/boot/trivial-boot.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CS.dir/src/boot/trivial-boot.cpp.o -MF CMakeFiles/CS.dir/src/boot/trivial-boot.cpp.o.d -o CMakeFiles/CS.dir/src/boot/trivial-boot.cpp.o -c /home/geo/CLionProjects/coresploit/src/boot/trivial-boot.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/geo/CLionProjects/coresploit-github/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/CS.dir/src/boot/trivial-boot.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CS.dir/src/boot/trivial-boot.cpp.o -MF CMakeFiles/CS.dir/src/boot/trivial-boot.cpp.o.d -o CMakeFiles/CS.dir/src/boot/trivial-boot.cpp.o -c /home/geo/CLionProjects/coresploit-github/src/boot/trivial-boot.cpp
 
 CMakeFiles/CS.dir/src/boot/trivial-boot.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CS.dir/src/boot/trivial-boot.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/geo/CLionProjects/coresploit/src/boot/trivial-boot.cpp > CMakeFiles/CS.dir/src/boot/trivial-boot.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/geo/CLionProjects/coresploit-github/src/boot/trivial-boot.cpp > CMakeFiles/CS.dir/src/boot/trivial-boot.cpp.i
 
 CMakeFiles/CS.dir/src/boot/trivial-boot.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CS.dir/src/boot/trivial-boot.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/geo/CLionProjects/coresploit/src/boot/trivial-boot.cpp -o CMakeFiles/CS.dir/src/boot/trivial-boot.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/geo/CLionProjects/coresploit-github/src/boot/trivial-boot.cpp -o CMakeFiles/CS.dir/src/boot/trivial-boot.cpp.s
 
 CMakeFiles/CS.dir/src/boot/boot.cpp.o: CMakeFiles/CS.dir/flags.make
-CMakeFiles/CS.dir/src/boot/boot.cpp.o: /home/geo/CLionProjects/coresploit/src/boot/boot.cpp
+CMakeFiles/CS.dir/src/boot/boot.cpp.o: /home/geo/CLionProjects/coresploit-github/src/boot/boot.cpp
 CMakeFiles/CS.dir/src/boot/boot.cpp.o: CMakeFiles/CS.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/geo/CLionProjects/coresploit/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/CS.dir/src/boot/boot.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CS.dir/src/boot/boot.cpp.o -MF CMakeFiles/CS.dir/src/boot/boot.cpp.o.d -o CMakeFiles/CS.dir/src/boot/boot.cpp.o -c /home/geo/CLionProjects/coresploit/src/boot/boot.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/geo/CLionProjects/coresploit-github/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/CS.dir/src/boot/boot.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CS.dir/src/boot/boot.cpp.o -MF CMakeFiles/CS.dir/src/boot/boot.cpp.o.d -o CMakeFiles/CS.dir/src/boot/boot.cpp.o -c /home/geo/CLionProjects/coresploit-github/src/boot/boot.cpp
 
 CMakeFiles/CS.dir/src/boot/boot.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CS.dir/src/boot/boot.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/geo/CLionProjects/coresploit/src/boot/boot.cpp > CMakeFiles/CS.dir/src/boot/boot.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/geo/CLionProjects/coresploit-github/src/boot/boot.cpp > CMakeFiles/CS.dir/src/boot/boot.cpp.i
 
 CMakeFiles/CS.dir/src/boot/boot.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CS.dir/src/boot/boot.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/geo/CLionProjects/coresploit/src/boot/boot.cpp -o CMakeFiles/CS.dir/src/boot/boot.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/geo/CLionProjects/coresploit-github/src/boot/boot.cpp -o CMakeFiles/CS.dir/src/boot/boot.cpp.s
 
 CMakeFiles/CS.dir/src/boot/config.cpp.o: CMakeFiles/CS.dir/flags.make
-CMakeFiles/CS.dir/src/boot/config.cpp.o: /home/geo/CLionProjects/coresploit/src/boot/config.cpp
+CMakeFiles/CS.dir/src/boot/config.cpp.o: /home/geo/CLionProjects/coresploit-github/src/boot/config.cpp
 CMakeFiles/CS.dir/src/boot/config.cpp.o: CMakeFiles/CS.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/geo/CLionProjects/coresploit/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/CS.dir/src/boot/config.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CS.dir/src/boot/config.cpp.o -MF CMakeFiles/CS.dir/src/boot/config.cpp.o.d -o CMakeFiles/CS.dir/src/boot/config.cpp.o -c /home/geo/CLionProjects/coresploit/src/boot/config.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/geo/CLionProjects/coresploit-github/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/CS.dir/src/boot/config.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CS.dir/src/boot/config.cpp.o -MF CMakeFiles/CS.dir/src/boot/config.cpp.o.d -o CMakeFiles/CS.dir/src/boot/config.cpp.o -c /home/geo/CLionProjects/coresploit-github/src/boot/config.cpp
 
 CMakeFiles/CS.dir/src/boot/config.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CS.dir/src/boot/config.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/geo/CLionProjects/coresploit/src/boot/config.cpp > CMakeFiles/CS.dir/src/boot/config.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/geo/CLionProjects/coresploit-github/src/boot/config.cpp > CMakeFiles/CS.dir/src/boot/config.cpp.i
 
 CMakeFiles/CS.dir/src/boot/config.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CS.dir/src/boot/config.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/geo/CLionProjects/coresploit/src/boot/config.cpp -o CMakeFiles/CS.dir/src/boot/config.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/geo/CLionProjects/coresploit-github/src/boot/config.cpp -o CMakeFiles/CS.dir/src/boot/config.cpp.s
 
 CMakeFiles/CS.dir/src/svc/svc-example.cpp.o: CMakeFiles/CS.dir/flags.make
-CMakeFiles/CS.dir/src/svc/svc-example.cpp.o: /home/geo/CLionProjects/coresploit/src/svc/svc-example.cpp
+CMakeFiles/CS.dir/src/svc/svc-example.cpp.o: /home/geo/CLionProjects/coresploit-github/src/svc/svc-example.cpp
 CMakeFiles/CS.dir/src/svc/svc-example.cpp.o: CMakeFiles/CS.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/geo/CLionProjects/coresploit/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/CS.dir/src/svc/svc-example.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CS.dir/src/svc/svc-example.cpp.o -MF CMakeFiles/CS.dir/src/svc/svc-example.cpp.o.d -o CMakeFiles/CS.dir/src/svc/svc-example.cpp.o -c /home/geo/CLionProjects/coresploit/src/svc/svc-example.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/geo/CLionProjects/coresploit-github/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/CS.dir/src/svc/svc-example.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CS.dir/src/svc/svc-example.cpp.o -MF CMakeFiles/CS.dir/src/svc/svc-example.cpp.o.d -o CMakeFiles/CS.dir/src/svc/svc-example.cpp.o -c /home/geo/CLionProjects/coresploit-github/src/svc/svc-example.cpp
 
 CMakeFiles/CS.dir/src/svc/svc-example.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CS.dir/src/svc/svc-example.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/geo/CLionProjects/coresploit/src/svc/svc-example.cpp > CMakeFiles/CS.dir/src/svc/svc-example.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/geo/CLionProjects/coresploit-github/src/svc/svc-example.cpp > CMakeFiles/CS.dir/src/svc/svc-example.cpp.i
 
 CMakeFiles/CS.dir/src/svc/svc-example.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CS.dir/src/svc/svc-example.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/geo/CLionProjects/coresploit/src/svc/svc-example.cpp -o CMakeFiles/CS.dir/src/svc/svc-example.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/geo/CLionProjects/coresploit-github/src/svc/svc-example.cpp -o CMakeFiles/CS.dir/src/svc/svc-example.cpp.s
 
 CMakeFiles/CS.dir/src/svc/svc.cpp.o: CMakeFiles/CS.dir/flags.make
-CMakeFiles/CS.dir/src/svc/svc.cpp.o: /home/geo/CLionProjects/coresploit/src/svc/svc.cpp
+CMakeFiles/CS.dir/src/svc/svc.cpp.o: /home/geo/CLionProjects/coresploit-github/src/svc/svc.cpp
 CMakeFiles/CS.dir/src/svc/svc.cpp.o: CMakeFiles/CS.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/geo/CLionProjects/coresploit/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/CS.dir/src/svc/svc.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CS.dir/src/svc/svc.cpp.o -MF CMakeFiles/CS.dir/src/svc/svc.cpp.o.d -o CMakeFiles/CS.dir/src/svc/svc.cpp.o -c /home/geo/CLionProjects/coresploit/src/svc/svc.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/geo/CLionProjects/coresploit-github/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/CS.dir/src/svc/svc.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CS.dir/src/svc/svc.cpp.o -MF CMakeFiles/CS.dir/src/svc/svc.cpp.o.d -o CMakeFiles/CS.dir/src/svc/svc.cpp.o -c /home/geo/CLionProjects/coresploit-github/src/svc/svc.cpp
 
 CMakeFiles/CS.dir/src/svc/svc.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CS.dir/src/svc/svc.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/geo/CLionProjects/coresploit/src/svc/svc.cpp > CMakeFiles/CS.dir/src/svc/svc.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/geo/CLionProjects/coresploit-github/src/svc/svc.cpp > CMakeFiles/CS.dir/src/svc/svc.cpp.i
 
 CMakeFiles/CS.dir/src/svc/svc.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CS.dir/src/svc/svc.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/geo/CLionProjects/coresploit/src/svc/svc.cpp -o CMakeFiles/CS.dir/src/svc/svc.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/geo/CLionProjects/coresploit-github/src/svc/svc.cpp -o CMakeFiles/CS.dir/src/svc/svc.cpp.s
 
 CMakeFiles/CS.dir/src/svc/prg-ustat.cpp.o: CMakeFiles/CS.dir/flags.make
-CMakeFiles/CS.dir/src/svc/prg-ustat.cpp.o: /home/geo/CLionProjects/coresploit/src/svc/prg-ustat.cpp
+CMakeFiles/CS.dir/src/svc/prg-ustat.cpp.o: /home/geo/CLionProjects/coresploit-github/src/svc/prg-ustat.cpp
 CMakeFiles/CS.dir/src/svc/prg-ustat.cpp.o: CMakeFiles/CS.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/geo/CLionProjects/coresploit/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/CS.dir/src/svc/prg-ustat.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CS.dir/src/svc/prg-ustat.cpp.o -MF CMakeFiles/CS.dir/src/svc/prg-ustat.cpp.o.d -o CMakeFiles/CS.dir/src/svc/prg-ustat.cpp.o -c /home/geo/CLionProjects/coresploit/src/svc/prg-ustat.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/geo/CLionProjects/coresploit-github/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/CS.dir/src/svc/prg-ustat.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CS.dir/src/svc/prg-ustat.cpp.o -MF CMakeFiles/CS.dir/src/svc/prg-ustat.cpp.o.d -o CMakeFiles/CS.dir/src/svc/prg-ustat.cpp.o -c /home/geo/CLionProjects/coresploit-github/src/svc/prg-ustat.cpp
 
 CMakeFiles/CS.dir/src/svc/prg-ustat.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CS.dir/src/svc/prg-ustat.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/geo/CLionProjects/coresploit/src/svc/prg-ustat.cpp > CMakeFiles/CS.dir/src/svc/prg-ustat.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/geo/CLionProjects/coresploit-github/src/svc/prg-ustat.cpp > CMakeFiles/CS.dir/src/svc/prg-ustat.cpp.i
 
 CMakeFiles/CS.dir/src/svc/prg-ustat.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CS.dir/src/svc/prg-ustat.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/geo/CLionProjects/coresploit/src/svc/prg-ustat.cpp -o CMakeFiles/CS.dir/src/svc/prg-ustat.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/geo/CLionProjects/coresploit-github/src/svc/prg-ustat.cpp -o CMakeFiles/CS.dir/src/svc/prg-ustat.cpp.s
 
 CMakeFiles/CS.dir/src/svc/system/security/svc-security.cpp.o: CMakeFiles/CS.dir/flags.make
-CMakeFiles/CS.dir/src/svc/system/security/svc-security.cpp.o: /home/geo/CLionProjects/coresploit/src/svc/system/security/svc-security.cpp
+CMakeFiles/CS.dir/src/svc/system/security/svc-security.cpp.o: /home/geo/CLionProjects/coresploit-github/src/svc/system/security/svc-security.cpp
 CMakeFiles/CS.dir/src/svc/system/security/svc-security.cpp.o: CMakeFiles/CS.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/geo/CLionProjects/coresploit/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/CS.dir/src/svc/system/security/svc-security.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CS.dir/src/svc/system/security/svc-security.cpp.o -MF CMakeFiles/CS.dir/src/svc/system/security/svc-security.cpp.o.d -o CMakeFiles/CS.dir/src/svc/system/security/svc-security.cpp.o -c /home/geo/CLionProjects/coresploit/src/svc/system/security/svc-security.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/geo/CLionProjects/coresploit-github/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/CS.dir/src/svc/system/security/svc-security.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CS.dir/src/svc/system/security/svc-security.cpp.o -MF CMakeFiles/CS.dir/src/svc/system/security/svc-security.cpp.o.d -o CMakeFiles/CS.dir/src/svc/system/security/svc-security.cpp.o -c /home/geo/CLionProjects/coresploit-github/src/svc/system/security/svc-security.cpp
 
 CMakeFiles/CS.dir/src/svc/system/security/svc-security.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CS.dir/src/svc/system/security/svc-security.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/geo/CLionProjects/coresploit/src/svc/system/security/svc-security.cpp > CMakeFiles/CS.dir/src/svc/system/security/svc-security.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/geo/CLionProjects/coresploit-github/src/svc/system/security/svc-security.cpp > CMakeFiles/CS.dir/src/svc/system/security/svc-security.cpp.i
 
 CMakeFiles/CS.dir/src/svc/system/security/svc-security.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CS.dir/src/svc/system/security/svc-security.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/geo/CLionProjects/coresploit/src/svc/system/security/svc-security.cpp -o CMakeFiles/CS.dir/src/svc/system/security/svc-security.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/geo/CLionProjects/coresploit-github/src/svc/system/security/svc-security.cpp -o CMakeFiles/CS.dir/src/svc/system/security/svc-security.cpp.s
 
 # Object files for target CS
 CS_OBJECTS = \
@@ -213,7 +213,7 @@ CS: /usr/lib/x86_64-linux-gnu/libX11.so
 CS: /usr/lib/x86_64-linux-gnu/libGLX.so
 CS: /usr/lib/x86_64-linux-gnu/libOpenGL.so
 CS: CMakeFiles/CS.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/geo/CLionProjects/coresploit/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable CS"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/geo/CLionProjects/coresploit-github/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable CS"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/CS.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -225,6 +225,6 @@ CMakeFiles/CS.dir/clean:
 .PHONY : CMakeFiles/CS.dir/clean
 
 CMakeFiles/CS.dir/depend:
-	cd /home/geo/CLionProjects/coresploit/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/geo/CLionProjects/coresploit /home/geo/CLionProjects/coresploit /home/geo/CLionProjects/coresploit/cmake-build-debug /home/geo/CLionProjects/coresploit/cmake-build-debug /home/geo/CLionProjects/coresploit/cmake-build-debug/CMakeFiles/CS.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/geo/CLionProjects/coresploit-github/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/geo/CLionProjects/coresploit-github /home/geo/CLionProjects/coresploit-github /home/geo/CLionProjects/coresploit-github/cmake-build-debug /home/geo/CLionProjects/coresploit-github/cmake-build-debug /home/geo/CLionProjects/coresploit-github/cmake-build-debug/CMakeFiles/CS.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/CS.dir/depend
 
