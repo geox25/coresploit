@@ -23,6 +23,7 @@ source, make sure OpenGL is installed and available on your system.
 **[Go to Project Philosophy](insert link here lol)**
 
 Immediate Todo:
+- (CLion) Right Click On File -> Analyze feature to improve code
 - Shell file to run `tail -f` of a `master.log` file that uses `spdlog` or `loguru`
 - Work on project philosophy & style guidelines
 - Self-hosted gitea private server
