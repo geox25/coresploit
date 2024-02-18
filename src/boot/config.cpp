@@ -3,7 +3,6 @@
 //
 
 #include <iostream>
-#include <stdio.h>
 #include "config.hpp"
 #include "toml.hpp"
 

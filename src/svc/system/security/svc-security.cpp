@@ -93,7 +93,7 @@ void security_main() {
     }*/
 }
 
-int service_security(const vector<string>& args) {
+int service_security([[maybe_unused]] const vector<string>& args) {
     // No conditional checking whether it is supposed to run or not because
     // SECURITY.SVC SHOULD ALWAYS BE RUNNING!
 

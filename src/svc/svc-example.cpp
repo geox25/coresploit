@@ -12,7 +12,7 @@ using std::cout, std::endl, std::string, std::queue;
 
 // Just an example service for future reference
 // Pass in a std::queue for relaying information
-int service_example(const vector<string>& args) {
+int service_example([[maybe_unused]] const vector<string>& args) {
     if (!requestRoutineStatus("example.svc")) {
         int counter = 1;
 

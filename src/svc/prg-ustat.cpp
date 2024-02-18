@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <string>
+#include <cstring>
 #include "svc.hpp"
 
 // Operating System Variables
@@ -178,13 +179,13 @@ int service_ustat_win64() {
 int service_ustat_win64() { return -1; }
 #endif
 
-int service_ustat(const vector<string>& args) {
+int service_ustat([[maybe_unused]] const vector<string>& args) {
 
     if (!requestRoutineStatus("ustat")) {
-        if (OS == OS_UNIX) {
+        if (strcmp(OS, OS_UNIX) == 0) {
             log_util.push("#O [prg-ustat] <prg-ustat.cpp>: Operating System Detected As: Unix");
             service_ustat_unix();
-        } else if (OS == OS_WIN64) {
+        } else if (strcmp(OS, OS_WIN64) == 0) {
             log_util.push("#O [prg-ustat] <prg-ustat.cpp>: Operating System Detected As: Win64");
             service_ustat_win64();
         } else {

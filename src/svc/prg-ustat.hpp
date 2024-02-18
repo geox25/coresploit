@@ -11,6 +11,6 @@
 
 using std::string, std::queue, std::vector;
 
-int service_ustat(const vector<string>& args);
+int service_ustat([[maybe_unused]] const vector<string>& args);
 
 #endif //PXL_PRG_USTAT_HPP

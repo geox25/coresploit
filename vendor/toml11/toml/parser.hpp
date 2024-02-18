@@ -2468,7 +2468,7 @@ parse(std::vector<char>& letters, const std::string& fname)
         letters.push_back('\n');
     }
 
-    detail::location loc(std::move(fname), std::move(letters));
+    detail::location loc(fname, std::move(letters));
 
     // skip BOM if exists.
     // XXX component of BOM (like 0xEF) exceeds the representable range of
@@ -2478,7 +2478,7 @@ parse(std::vector<char>& letters, const std::string& fname)
     // convert char to unsigned char to guarantee the comparability.
     if(loc.source()->size() >= 3)
     {
-        std::array<unsigned char, 3> BOM;
+        std::array<unsigned char, 3> BOM{};
         std::memcpy(BOM.data(), loc.source()->data(), 3);
         if(BOM[0] == 0xEF && BOM[1] == 0xBB && BOM[2] == 0xBF)
         {

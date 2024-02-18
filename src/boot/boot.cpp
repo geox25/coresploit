@@ -103,8 +103,8 @@ namespace boot::window {
         }
 
         void PopulateCommandMap() {
-            command_map["CLEAR"]    = [this](const vector<string>& cmd) { ClearLog(); };
-            command_map["HELP"]     = [this](const vector<string>& cmd) { AddLog("Commands: CLEAR, HELP, RUN, STOP"); };
+            command_map["CLEAR"]    = [this]([[maybe_unused]] const vector<string>& cmd) { ClearLog(); };
+            command_map["HELP"]     = [this]([[maybe_unused]] const vector<string>& cmd) { AddLog("Commands: CLEAR, HELP, RUN, STOP"); };
             command_map["RUN"]    = [this](const vector<string>& cmd) {
                 if (cmd.size() < 2) {
                     return;
@@ -141,7 +141,7 @@ namespace boot::window {
                     AddLog("#E [0] <boot.cpp>: Could not locate service: " + cmd.at(1));
                 }
             };
-            command_map["ACTIVE"] = [this](const vector<string>& cmd) {
+            command_map["ACTIVE"] = [this]([[maybe_unused]] const vector<string>& cmd) {
                 show_active_services();
             };
 
@@ -316,7 +316,7 @@ namespace boot::window {
             }
         }
 
-        static int TextEditCallbackStub(ImGuiInputTextCallbackData* data) {
+        static int TextEditCallbackStub([[maybe_unused]] ImGuiInputTextCallbackData* data) {
             return 0;
         }
     };

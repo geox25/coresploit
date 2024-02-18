@@ -9,6 +9,6 @@
 
 using std::string;
 
-int service_example(const vector<string>& args);
+int service_example([[maybe_unused]] const vector<string>& args);
 
 #endif //PXL_SVC_EXAMPLE_HPP
