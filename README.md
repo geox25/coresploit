@@ -22,6 +22,7 @@ one stable release that is much more polished and contains more features.
 | imgui      | Coresploit GUI          | 1.90.1  | 1.90.3         | 📦      |
 | toml11     | Coresploit config files | 3.8.1   | 3.8.1          | 📦      |
 | opengl3    | Used by imgui           | N/A     | N/A            | ⚙️      |
+
 <sub><sup>[See MD Table Tool](https://www.tablesgenerator.com/markdown_tables#)
 </sup></sub>
 
