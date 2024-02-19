@@ -37,7 +37,6 @@ Immediate Todo:
 - (CLion) Right Click On File -> Analyze feature to improve code
 - Shell file to run `tail -f` of a `master.log` file that uses `spdlog` or `loguru`
 - Work on project philosophy & style guidelines
-- Self-hosted gitea private server
 - Setup Library Infrastructure
 - LevelDB for library infrastructure and host os service threat detection
 - Add ``win64-basic_keylog`` to library (Visual studio)
