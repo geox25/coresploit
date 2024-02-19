@@ -6,17 +6,17 @@ This update focuses on making sure everything is clean and prepared for the next
 
 - New `uptime` command to show how long coresploit has been online *(format `D:H:M:S`)*
 - Updated `help` command to finally be accurate
-- Verbose option is now loaded from `config.toml` when coresploit is started
+- Verbose and theme options are now loaded from the config when coresploit is started and saved to the config when coresploit is stopped
 
 # Backend Changes
 
 ### Added
 
-
+- `VERBOSE` from `config.hpp` is now used internally instead of the old verbose variable
 
 ### Changed
 
-
+- Old verbose variable in `boot.cpp` has been removed in favor of config changes
 
 ### Fixed
 

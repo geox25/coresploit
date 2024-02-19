@@ -136,7 +136,7 @@ int main(int, char**) {
     glfwDestroyWindow(window);
     glfwTerminate();
 
-
+    save_config();
 
     return 0;
 }
