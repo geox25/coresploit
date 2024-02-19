@@ -22,13 +22,15 @@ one stable release that is much more polished and contains more features.
 | imgui      | Coresploit GUI          | 1.90.1  | 1.90.3         | 📦      |
 | toml11     | Coresploit config files | 3.8.1   | 3.8.1          | 📦      |
 | opengl3    | Used by imgui           | N/A     | N/A            | ⚙️      |
+<sub><sup>[See MD Table Tool](https://www.tablesgenerator.com/markdown_tables#)
+</sup></sub>
 
 ## Installation
 Coresploit can be easily compiled from source (especially on CLion) however precompiled binaries are also available for each stable release. If you compile from
 source, make sure OpenGL is installed and available on your system. 
 
 ## Roadmap
-**[Go to Project Philosophy](philosophy.txt)**
+**[Go to Project Philosophy](philosophy.md)**
 
 Immediate Todo:
 - (CLion) Right Click On File -> Analyze feature to improve code
