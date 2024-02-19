@@ -19,14 +19,14 @@
 
 using std::string, std::vector, std::unordered_map, std::function, std::istream_iterator, std::stringstream, std::transform, std::future, std::function;
 
+// Record start time
+const auto start = std::chrono::system_clock::now();
+
 namespace boot::routine {
     static vector<string> Items;
-    static bool verbose = true;
 
     void AddLog(const string& log) {
-        // Add msg to log if it isn't other OR if verbose is enabled
-        if (!log.starts_with("#O") || verbose)
-            Items.push_back(log);
+        Items.push_back(log);
     }
 
     static void ClearLog() {
@@ -69,7 +69,7 @@ namespace boot::routine {
     }
 }
 
-using boot::routine::AddLog, boot::routine::ClearLog, boot::routine::CopyItemsToClipboard, boot::routine::runRoutineAsProgram, boot::routine::runRoutineAsService, boot::routine::verbose;
+using boot::routine::AddLog, boot::routine::ClearLog, boot::routine::CopyItemsToClipboard, boot::routine::runRoutineAsProgram, boot::routine::runRoutineAsService;
 
 namespace boot::window {
 
@@ -104,7 +104,7 @@ namespace boot::window {
 
         void PopulateCommandMap() {
             command_map["CLEAR"]    = [this]([[maybe_unused]] const vector<string>& cmd) { ClearLog(); };
-            command_map["HELP"]     = [this]([[maybe_unused]] const vector<string>& cmd) { AddLog("Commands: CLEAR, HELP, RUN, STOP"); };
+            command_map["HELP"]     = [this]([[maybe_unused]] const vector<string>& cmd) { AddLog("Commands:\n - CLEAR\n - HELP\n - RUN\n - STOP\n - ACTIVE\n - UPTIME\n - USTAT"); };
             command_map["RUN"]    = [this](const vector<string>& cmd) {
                 if (cmd.size() < 2) {
                     return;
@@ -143,6 +143,24 @@ namespace boot::window {
             };
             command_map["ACTIVE"] = [this]([[maybe_unused]] const vector<string>& cmd) {
                 show_active_services();
+            };
+            command_map["UPTIME"] = [this]([[maybe_unused]] const vector<string>& cmd) {
+                // Get current time
+                const auto end = std::chrono::system_clock::now();
+                // Calculate the difference
+                auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(end - start);
+                // Convert to time_t
+                std::time_t seconds = elapsed.count();
+                tm* p = gmtime(&seconds);
+                string buffer;
+                buffer += (std::format(
+                        "Uptime: {}:{}:{}:{}",
+                        p->tm_yday,
+                        p->tm_hour,
+                        p->tm_min,
+                        p->tm_sec
+                        ));
+                log_util.push(buffer);
             };
 
             /*
@@ -199,7 +217,7 @@ namespace boot::window {
                     ImGui::EndCombo();
                 }
 
-                ImGui::Checkbox("Verbose", &verbose);
+                ImGui::Checkbox("Verbose", &VERBOSE);
                 ImGui::EndPopup();
             }
 
@@ -224,19 +242,22 @@ namespace boot::window {
 
                 // Merge log messages from log_system to main Items vector (priority over util)
                 while (log_system.size() != 0) {
-                    if (!log_system.front().starts_with("#O") || verbose)
-                        routine::Items.push_back(log_system.front());
+                    routine::Items.push_back(log_system.front());
                     log_system.pop();
                 }
 
                 // Merge log messages from log_util to main Items vector
                 while (log_util.size() != 0) {
-                    if (!log_util.front().starts_with("#O") || verbose)
-                        routine::Items.push_back(log_util.front());
+                    routine::Items.push_back(log_util.front());
                     log_util.pop();
                 }
 
                 for (const string& item : routine::Items) {
+                    // If log is marked as verbose and verbose is disabled then skip
+                    if (item.starts_with("#O") && !VERBOSE)
+                        continue;
+
+                    // If log does not pass filter than skip
                     if (!filter.PassFilter(item.c_str()))
                         continue;
 

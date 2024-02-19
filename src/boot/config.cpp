@@ -63,6 +63,7 @@ void init_config() {
         config_data["Config"]["default_win_console_size"] = {CFG_DEFAULT_DEFAULT_WIN_CONSOLE_SIZE[0], CFG_DEFAULT_DEFAULT_WIN_CONSOLE_SIZE[1]};
         config_data["Config"]["security_flags"] = CFG_DEFAULT_SECURITY_FLAGS;
         config_data["Config"]["default_theme"] = CFG_DEFAULT_DEFAULT_THEME;
+        config_data["Config"]["verbose"] = CFG_DEFAULT_VERBOSE;
     }
 
     // This will set the values of the config variables used in the program to the values that are used in the config
@@ -79,6 +80,7 @@ void init_config() {
     DEFAULT_WIN_CONSOLE_SIZE = ImVec2(toml::find<float>(default_win_console_size_arr, 0), toml::find<float>(default_win_console_size_arr, 1));
     SECURITY_FLAGS = toml::find<vector<string>>(config, "security_flags");
     DEFAULT_THEME = toml::find<string>(config, "default_theme");
+    VERBOSE = toml::find<bool>(config, "verbose");
 
     // Write TOML data to file
     std::ofstream file(FULL_CONFIG_PATH);

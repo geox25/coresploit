@@ -20,6 +20,7 @@ inline const char*                  CFG_DEFAULT_CS_TITLE_CSTR()         { return
 inline constexpr ImVec2             CFG_DEFAULT_DEFAULT_WIN_CONSOLE_SIZE = {1280, 720};   // Default X,Y window size of the console
 inline vector<string>               CFG_DEFAULT_SECURITY_FLAGS           = {};
 inline const string                 CFG_DEFAULT_DEFAULT_THEME            = "THEME_MODERN";
+inline const bool                   CFG_DEFAULT_VERBOSE                  = true;
 
 inline string CS_VERSION;
 inline string CS_TITLE;
@@ -27,6 +28,7 @@ inline const char* CS_TITLE_CSTR;
 inline ImVec2 DEFAULT_WIN_CONSOLE_SIZE;
 inline vector<string> SECURITY_FLAGS;
 inline string DEFAULT_THEME;
+inline bool VERBOSE;
 
 // Return the front-end formatting for the default theme
 string DEFAULT_THEME_FRONTEND();
