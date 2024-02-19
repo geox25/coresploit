@@ -1,10 +1,11 @@
-# v1.3 Stable
-This is the second stable release of Coresploit which focuses on improving code quality and bug fixes while still adding some small interesting features. :tada:
+# 1.3: Configuration Update
+This update focuses on improving code quality and bug fixes while still adding some small interesting features. :tada:
 
 ---
 # Features
 
 - Coresploit is now configured through `config.toml` which is much more readable than a header file
+- Dependencies table in `README.md`
 
 # Backend Changes
 
@@ -17,6 +18,7 @@ This is the second stable release of Coresploit which focuses on improving code 
 - Heavily cleaned up `CMakeLists.txt` with better organization and sections
 - `config.toml` is now used for configuration instead of directly modifying `config.hpp`
 - Removed useless `blacklisted_services` variable in `svc-security.cpp`
+- Removed `docs/dependencies-manifest.md` in favor of dependencies table in `README.md`
 
 ### Fixed
 

@@ -88,7 +88,7 @@ add_executable(CS src/main.cpp
 # =============================================================================
 # Setup final project settings
 
-# Make sure glfw3, opengl are found
+# Make sure opengl is found
 # find_package(glfw3 REQUIRED)
 find_package(OpenGL REQUIRED)
 

@@ -15,6 +15,14 @@ Precompiled binaries are available for Windows and Linux and are usually shipped
 some nightly releases will be made containing experimental features and bug fixes. Towards the middle to end of a given month, there will be at least
 one stable release that is much more polished and contains more features.
 
+## Dependencies
+| Dependency | Usage                   | Version | Latest Version | Status |
+|------------|-------------------------|---------|----------------|--------|
+| glfw       | Used by imgui           | 3.3.9   | 3.3.9          | 📦      |
+| imgui      | Coresploit GUI          | 1.90.1  | 1.90.3         | 📦      |
+| toml11     | Coresploit config files | 3.8.1   | 3.8.1          | 📦      |
+| opengl3    | Used by imgui           | N/A     | N/A            | ⚙️      |
+
 ## Installation
 Coresploit can be easily compiled from source (especially on CLion) however precompiled binaries are also available for each stable release. If you compile from
 source, make sure OpenGL is installed and available on your system. 
