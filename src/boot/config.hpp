@@ -36,4 +36,7 @@ string DEFAULT_THEME_FRONTEND();
 // Initializes the configuration variables as seen above
 void init_config();
 
+// Saves changes to options during runtime to config.toml
+void save_config();
+
 #endif //PXL_CONFIG_HPP

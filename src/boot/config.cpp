@@ -87,3 +87,23 @@ void init_config() {
     file << (config_data);
     file.close();
 }
+
+void save_config() {
+    std::cout << "saving config" << std::endl;
+
+    // TOML data from file in root directory of project
+    toml::value config_data;
+    try {
+        config_data = toml::parse(FULL_CONFIG_PATH);
+    } catch (const std::runtime_error& error) {
+        std::cout << error.what() << std::endl;
+    }
+
+    config_data["Config"]["verbose"] = VERBOSE;
+    config_data["Config"]["default_theme"] = DEFAULT_THEME;
+
+    // Write TOML data to file
+    std::ofstream file(FULL_CONFIG_PATH);
+    file << (config_data);
+    file.close();
+}

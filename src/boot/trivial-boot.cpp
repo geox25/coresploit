@@ -227,6 +227,8 @@ namespace boot::trivial {
 
     // Select style based on name
     void use_theme(const std::string& theme, ImGuiStyle& style) {
+        DEFAULT_THEME = theme;
+
         if (theme == "THEME_MODERN") {use_modern_theme(style); return;}
         if (theme == "THEME_RETRO") {use_retro_theme(style); return;}
         if (theme == "THEME_GRAY") {use_gray_theme(style); return;}
