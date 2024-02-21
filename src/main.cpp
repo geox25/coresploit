@@ -78,7 +78,7 @@ int main(int, char**) {
     io.GetClipboardTextFn = _IMGUIGetClipboardText;
 
     // Setup lucida-console font size 14
-    io.Fonts->AddFontFromFileTTF("../rsc/fonts/lucida-console.ttf", 14.0f, nullptr, io.Fonts->GetGlyphRangesDefault());
+    io.Fonts->AddFontFromFileTTF("rsc/fonts/lucida-console.ttf", 14.0f, nullptr, io.Fonts->GetGlyphRangesDefault());
 
     // Setup Style
     boot::trivial::use_theme(DEFAULT_THEME, ImGui::GetStyle());
@@ -111,7 +111,7 @@ int main(int, char**) {
         if (show_demo_window)
             ImGui::ShowDemoWindow(&show_demo_window);
 
-        // Show main PXL Console window as long as it was not deliberately disabled
+        // Show main CS Console window as long as it was not deliberately disabled
         if (show_console)
             boot::window::ShowConsole(show_console);
 
