@@ -1,6 +1,6 @@
 # Coresploit Private Repository
 
-[![Stable - v1.3](https://img.shields.io/badge/Stable-v1.3-2ea44f?style=for-the-badge)](https://)
+[![Stable - v1.4](https://img.shields.io/badge/Stable-v1.4-2ea44f?style=for-the-badge)](https://)
 [![Nightly - v1.1](https://img.shields.io/badge/Nightly-v1.1-852ea4?style=for-the-badge)](https://)
 [![License - Private/Proprietary](https://img.shields.io/badge/License-Private%2FProprietary-blue?style=for-the-badge)](https://)
 [![view - Documentation](https://img.shields.io/badge/view-Documentation-blue?style=for-the-badge)](/docs/ "Go to project documentation")
