@@ -3,7 +3,6 @@
 #include "imgui_impl_opengl3.h"
 #include <GLFW/glfw3.h> // Will drag system OpenGL headers
 #include <cstdio>
-#include <iostream>
 
 // Includes for in-house libraries
 #include "boot/trivial-boot.hpp"

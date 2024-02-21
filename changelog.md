@@ -17,6 +17,7 @@ This update focuses on making sure everything is clean and prepared for the next
 ### Changed
 
 - Old verbose variable in `boot.cpp` has been removed in favor of config changes
+- Removed unused `#include <iostream>` in `main.cpp`
 
 ### Fixed
 
