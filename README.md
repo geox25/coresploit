@@ -36,8 +36,8 @@ source, make sure OpenGL is installed and available on your system.
 Immediate Todo:
 - Logging to console window including ascii art of coresploit
 - Detailed system fingerprinting in security.svc
-- (CLion) Right Click On File -> Analyze feature to improve code
-- Shell file to run `tail -f` of a `master.log` file that uses `spdlog` or `loguru`
+- Qodana Code Analysis
+- Use `spdlog` or similar to log to console window
 - Work on project philosophy & style guidelines
 - Setup Library Infrastructure
 - LevelDB for library infrastructure and host os service threat detection
