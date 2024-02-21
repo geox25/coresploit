@@ -20,6 +20,8 @@ This update focuses on making sure everything is clean and prepared for the next
 
 ### Fixed
 
+- Fixed linker issues with the executable trying to find standard libraries (static linked now)
+- Fixed executable not being able to find `rsc/fonts/`
 - Fixed warning on win64 from `exec` being defined but not used in `prg-ustat.cpp`
 
 ---
