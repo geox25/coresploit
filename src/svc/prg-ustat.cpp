@@ -32,7 +32,7 @@
 
 using std::string, std::to_string;
 
-static std::string exec(const char* cmd) {
+[[maybe_unused]] static std::string exec(const char* cmd) {
     char buffer[128];
     std::string result;
     FILE* pipe = popen(cmd, "r");

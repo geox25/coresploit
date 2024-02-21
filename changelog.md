@@ -20,7 +20,7 @@ This update focuses on making sure everything is clean and prepared for the next
 
 ### Fixed
 
-
+- Fixed warning on win64 from `exec` being defined but not used in `prg-ustat.cpp`
 
 ---
 
