@@ -14,7 +14,7 @@
 
 using std::string, std::vector;
 
-inline const string                 CFG_DEFAULT_CS_VERSION              = "v1.3 Stable";
+inline const string                 CFG_DEFAULT_CS_VERSION              = "v1.4 Stable";
 inline const string                 CFG_DEFAULT_CS_TITLE                = ("Coresploit " + CFG_DEFAULT_CS_VERSION);
 inline const char*                  CFG_DEFAULT_CS_TITLE_CSTR()         { return CFG_DEFAULT_CS_TITLE.c_str(); }
 inline constexpr ImVec2             CFG_DEFAULT_DEFAULT_WIN_CONSOLE_SIZE = {1280, 720};   // Default X,Y window size of the console

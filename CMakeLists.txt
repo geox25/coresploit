@@ -80,7 +80,10 @@ add_executable(CS src/main.cpp
         src/svc/svc.cpp
         src/svc/prg-ustat.cpp
         src/svc/system/security/svc-security.cpp
+        rsc/app.rc
 )
+
+set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "Coresploit Bootstrapper")
 # =============================================================================
 
 

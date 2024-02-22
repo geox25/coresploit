@@ -70,9 +70,9 @@ string merge_security_flags() {
     return result;
 }
 
-void gather_system_info() {
+void start_detailed_fingerprint() {
     // Do something more in depth...
-    log("Gathering more detailed information...");
+    log("Starting detailed fingerprinting...");
 }
 
 void security_main() {
@@ -86,7 +86,7 @@ void security_main() {
     log(INFO_OPERATING_SYSTEM);
     log(INFO_SECURITY_FLAGS);
 
-    gather_system_info();
+    start_detailed_fingerprint();
 
     /*while(1) {
         // while true, do nothing for now ...
