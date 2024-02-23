@@ -202,6 +202,22 @@ namespace boot::window {
             // Options popup menu with example checkbox
             if (ImGui::BeginPopup("Options")) {
                 if (ImGui::BeginCombo("Themes", selected_theme.c_str())) {
+                    if (ImGui::Selectable("Unreal")) {
+                        selected_theme = "Unreal";
+                        trivial::use_theme("THEME_UNREAL", ImGui::GetStyle());
+                    }
+                    if (ImGui::Selectable("Microsoft")) {
+                        selected_theme = "Microsoft";
+                        trivial::use_theme("THEME_MICROSOFT", ImGui::GetStyle());
+                    }
+                    if (ImGui::Selectable("Material Flat")) {
+                        selected_theme = "Material Flat";
+                        trivial::use_theme("THEME_MATERIAL_FLAT", ImGui::GetStyle());
+                    }
+                    if (ImGui::Selectable("Futuristic")) {
+                        selected_theme = "Futuristic";
+                        trivial::use_theme("THEME_FUTURISTIC", ImGui::GetStyle());
+                    }
                     if (ImGui::Selectable("Modern")) {
                         selected_theme = "Modern";
                         trivial::use_theme("THEME_MODERN", ImGui::GetStyle());

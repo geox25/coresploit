@@ -12,15 +12,15 @@ const string FULL_CONFIG_PATH = "config.toml";
 
 // Return the front-end formatting for the default theme
 string DEFAULT_THEME_FRONTEND() {
-    if (DEFAULT_THEME == "THEME_MODERN") {
-        return "Modern";
-    } else if (DEFAULT_THEME == "THEME_RETRO") {
-        return "Retro";
-    } else if (DEFAULT_THEME == "THEME_GRAY") {
-        return "Gray";
-    } else {
-        return "Modern";
-    }
+    if (DEFAULT_THEME == "THEME_UNREAL") {return "Unreal";}
+    if (DEFAULT_THEME == "THEME_MICROSOFT") {return "Microsoft";}
+    if (DEFAULT_THEME == "THEME_MATERIAL_FLAT") {return "Material Flat";}
+    if (DEFAULT_THEME == "THEME_FUTURISTIC") {return "Futuristic";}
+    if (DEFAULT_THEME == "THEME_MODERN") {return "Modern";}
+    if (DEFAULT_THEME == "THEME_RETRO") {return "Retro";}
+    if (DEFAULT_THEME == "THEME_GRAY") {return "Gray";}
+
+    return "Modern";
 }
 
 int init_config_file(const string& file_dir) {
