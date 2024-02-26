@@ -7,7 +7,6 @@
 #include <functional>
 #include <iostream>
 #include <iterator>
-#include <sstream>
 #include <future>
 #include <fstream>
 #include <chrono>
